@@ -19,11 +19,35 @@ export interface ProcessStepTranslation {
   description: string
 }
 
+export interface SkillCategoryTranslation {
+  title: string
+  items: string[]
+}
+
+export interface LanguageSkillTranslation {
+  name: string
+  level: string
+}
+
+export interface EducationTranslation {
+  degree: string
+  period: string
+}
+
+export interface ExperienceJobTranslation {
+  company: string
+  role: string
+  bullets: string[]
+  tech: string[]
+  featured: boolean
+}
+
 export interface Translation {
   nav: {
-    services: string
+    about: string
+    skills: string
     work: string
-    process: string
+    experience: string
     hire: string
   }
   hero: {
@@ -41,6 +65,26 @@ export interface Translation {
     stacks: string
     satisfaction: string
   }
+  about: {
+    tag: string
+    titleLine1: string
+    titleLine2: string
+    bio: string[]
+    locationLabel: string
+    location: string
+    availability: string
+    languagesLabel: string
+    languages: LanguageSkillTranslation[]
+    educationLabel: string
+    education: EducationTranslation[]
+  }
+  skills: {
+    tag: string
+    titleLine1: string
+    titleLine2: string
+    desc: string
+    categories: SkillCategoryTranslation[]
+  }
   services: {
     tag: string
     titleLine1: string
@@ -54,6 +98,14 @@ export interface Translation {
     titleLine2: string
     desc: string
     projects: ProjectTranslation[]
+  }
+  experience: {
+    tag: string
+    titleLine1: string
+    titleLine2: string
+    desc: string
+    earlierLabel: string
+    jobs: ExperienceJobTranslation[]
   }
   process: {
     tag: string
@@ -73,17 +125,18 @@ export interface Translation {
 
 const en: Translation = {
   nav: {
-    services: "Services",
+    about: "About",
+    skills: "Skills",
     work: "Work",
-    process: "Process",
+    experience: "Experience",
     hire: "Hire Me",
   },
   hero: {
     eyebrow: "Available for new projects · Full-Stack Developer",
-    titleLine1: "I Build Pages",
-    titleLine2: "That Convert.",
+    titleLine1: "I Build Full-Stack",
+    titleLine2: "Digital Products.",
     subtitle:
-      "Full-stack developer specializing in high-converting landing pages, complete sales funnels, and modern web applications — built with Next.js, TypeScript, Supabase, and direct response principles.",
+      "Full-stack developer crafting landing pages, institutional websites, web applications, and complete sales funnels — end to end, from interface to database, integrations, and deploy. Powered by Next.js, TypeScript, Node.js, and Supabase.",
     cta1: "See My Work",
     cta2: "Let's Talk →",
     scroll: "scroll",
@@ -91,8 +144,71 @@ const en: Translation = {
   stats: {
     projects: "Projects Delivered",
     experience: "Years Experience",
-    stacks: "Tech Stacks",
+    stacks: "Core Tech Stacks",
     satisfaction: "% Satisfaction",
+  },
+  about: {
+    tag: "// who i am",
+    titleLine1: "Behind the",
+    titleLine2: "Code",
+    bio: [
+      "I'm a full-stack developer based in Santa Catarina, Brazil, building landing pages, institutional websites, and web applications end to end — from the interface down to the database, integrations, and deploy.",
+      "My path into development came through IT support, coordination, and technical operations before moving into full-time engineering — which shapes how I work: I care about production readiness, clean code, and clear communication as much as I care about shipping fast. I've delivered projects for clients in Brazil and Europe.",
+    ],
+    locationLabel: "Location",
+    location: "Santa Catarina, Brazil",
+    availability: "Available for new projects",
+    languagesLabel: "Languages",
+    languages: [
+      { name: "Portuguese", level: "Native" },
+      { name: "English", level: "Advanced" },
+      { name: "Spanish", level: "Basic" },
+    ],
+    educationLabel: "Education",
+    education: [
+      { degree: "Software Engineering", period: "2025 — 2028" },
+      { degree: "Business Administration", period: "2019 — 2023" },
+    ],
+  },
+  skills: {
+    tag: "// tech stack",
+    titleLine1: "Skills &",
+    titleLine2: "Tools",
+    desc: "The languages, frameworks, and tools I use to take a project from a blank file to a production deploy.",
+    categories: [
+      {
+        title: "Front-End",
+        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+      },
+      {
+        title: "Back-End",
+        items: ["Node.js", "REST APIs", "Webhooks", "Server Actions", "External Integrations"],
+      },
+      {
+        title: "Database",
+        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Versioning",
+        items: ["Git", "GitHub", "Pull Requests", "Code Review"],
+      },
+      {
+        title: "Deploy & Automation",
+        items: ["Vercel", "N8N"],
+      },
+      {
+        title: "Artificial Intelligence",
+        items: ["Claude", "Cursor", "Codex"],
+      },
+      {
+        title: "Tools & Platforms",
+        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
+      },
+      {
+        title: "Operating Systems",
+        items: ["Windows", "Linux", "iOS"],
+      },
+    ],
   },
   services: {
     tag: "// what i do",
@@ -134,7 +250,7 @@ const en: Translation = {
     tag: "// selected work",
     titleLine1: "Projects Built",
     titleLine2: "for Real Results",
-    desc: "Real projects across different industries, each with a full tech stack and clear purpose. Images coming soon.",
+    desc: "Real projects across different industries — the stack, the scope, and the purpose behind each one.",
     projects: [
       {
         category: "Institutional · Education",
@@ -180,6 +296,90 @@ const en: Translation = {
       },
     ],
   },
+  experience: {
+    tag: "// career path",
+    titleLine1: "Professional",
+    titleLine2: "Experience",
+    desc: "From technical support and IT coordination to full-stack engineering — a career built on hands-on production experience.",
+    earlierLabel: "Earlier Experience",
+    jobs: [
+      {
+        company: "Parks Company",
+        role: "Full-Stack Developer",
+        bullets: [
+          "Built landing pages, institutional websites, and web applications for clients across different niches.",
+          "Developed front-end and full-stack solutions using React, Next.js, Node.js, TypeScript, and JavaScript.",
+          "Modeled, built, and maintained databases using Supabase.",
+          "Implemented forms with validation and data persistence, and integrated external APIs and services.",
+          "Applied Clean Code principles and continuous refactoring; versioned all work with Git and GitHub, including PR reviews.",
+        ],
+        tech: ["React", "Next.js", "Node.js", "TypeScript", "Supabase", "Vercel", "Git"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Front-End Developer",
+        bullets: [
+          "Built landing pages, institutional websites, and web applications using HTML, CSS, and JavaScript.",
+          "Implemented modern, reusable, and scalable interfaces focused on performance and maintainability.",
+          "Applied Clean Code principles and continuous refactoring to improve the codebase.",
+          "Managed daily demands using Slack and Monday; edited and deployed sites via Hostinger.",
+          "Maintained and customized WordPress-based sites.",
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Back-End Developer",
+        bullets: [
+          "Built landing pages, institutional websites, and web applications with HTML, CSS, JavaScript, TypeScript, and Next.js.",
+          "Created and maintained automation workflows in N8N and integrated compliance platforms.",
+          "Analyzed and maintained the company's database.",
+          "Tracked clicks and sales with RedTrack, measuring conversions across campaigns.",
+          "Built and maintained the company's internal store.",
+        ],
+        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        featured: true,
+      },
+      {
+        company: "TH Tecnologia",
+        role: "IT Coordinator",
+        bullets: [
+          "Coordinated HR and customer service operations, including partner onboarding and offboarding.",
+          "Ran internal and external training sessions and led internal audits of service processes.",
+          "Provided Windows and iOS technical support, plus internal and external company support.",
+          "Built and maintained the company's website.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Mosaic Sistemas",
+        role: "Technical Support",
+        bullets: [
+          "Managed client and partner data using internal control software.",
+          "Analyzed documents for company registration and provided remote support to resolve client issues.",
+          "Ran training sessions for clients and partners; built project presentations tracking client progress.",
+          "Provided Windows and SQL support.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Jubarte Conveniência",
+        role: "Administrative Assistant",
+        bullets: [
+          "Handled financial organization, credit card reconciliation, and payroll/overtime calculations.",
+          "Automated internal processes and managed supplier and partner contracts.",
+          "Controlled inventory, pricing, and expiration dates using internal software; handled resale purchase orders.",
+          "Provided internal and external technical support.",
+        ],
+        tech: [],
+        featured: false,
+      },
+    ],
+  },
   process: {
     tag: "// how i work",
     titleLine1: "Clean Process,",
@@ -214,22 +414,23 @@ const en: Translation = {
     titleLine2: "That Sells.",
     desc: "Available for landing pages, funnels, and full-stack projects. Fast turnaround. Real results.",
   },
-  footer: "<leo.dev /> · Landing Pages & Full-Stack Development · © 2025",
+  footer: "<leo.dev /> · Full-Stack Development · © 2026",
 }
 
 const pt: Translation = {
   nav: {
-    services: "Serviços",
+    about: "Sobre",
+    skills: "Skills",
     work: "Trabalhos",
-    process: "Processo",
+    experience: "Experiência",
     hire: "Contrate-me",
   },
   hero: {
     eyebrow: "Disponível para novos projetos · Desenvolvedor Full-Stack",
-    titleLine1: "Eu Crio Páginas",
-    titleLine2: "Que Convertem.",
+    titleLine1: "Eu Construo Produtos",
+    titleLine2: "Full-Stack Completos.",
     subtitle:
-      "Desenvolvedor full-stack especializado em landing pages de alta conversão, funis de vendas completos e aplicações web modernas — construídos com Next.js, TypeScript, Supabase e princípios de resposta direta.",
+      "Desenvolvedor full-stack que cria landing pages, sites institucionais, aplicações web e funis de vendas completos — do front-end ao banco de dados, integrações e deploy. Com Next.js, TypeScript, Node.js e Supabase em cada projeto.",
     cta1: "Ver Meus Trabalhos",
     cta2: "Vamos Conversar →",
     scroll: "rolar",
@@ -237,8 +438,71 @@ const pt: Translation = {
   stats: {
     projects: "Projetos Entregues",
     experience: "Anos de Experiência",
-    stacks: "Stacks de Tecnologia",
+    stacks: "Stacks Principais",
     satisfaction: "% de Satisfação",
+  },
+  about: {
+    tag: "// quem eu sou",
+    titleLine1: "Por Trás do",
+    titleLine2: "Código",
+    bio: [
+      "Sou desenvolvedor full-stack de Santa Catarina, Brasil, e construo landing pages, sites institucionais e aplicações web de ponta a ponta — da interface ao banco de dados, integrações e deploy.",
+      "Cheguei ao desenvolvimento passando por suporte técnico, coordenação de TI e operações técnicas antes de migrar para a engenharia em tempo integral — isso molda como eu trabalho: me importo tanto com ambiente de produção e código limpo quanto com entregar rápido. Já entreguei projetos para clientes no Brasil e na Europa.",
+    ],
+    locationLabel: "Localização",
+    location: "Santa Catarina, Brasil",
+    availability: "Disponível para novos projetos",
+    languagesLabel: "Idiomas",
+    languages: [
+      { name: "Português", level: "Nativo" },
+      { name: "Inglês", level: "Avançado" },
+      { name: "Espanhol", level: "Básico" },
+    ],
+    educationLabel: "Formação",
+    education: [
+      { degree: "Engenharia de Software", period: "2025 — 2028" },
+      { degree: "Administração", period: "2019 — 2023" },
+    ],
+  },
+  skills: {
+    tag: "// stack técnico",
+    titleLine1: "Skills &",
+    titleLine2: "Ferramentas",
+    desc: "As linguagens, frameworks e ferramentas que uso para levar um projeto do zero até o deploy em produção.",
+    categories: [
+      {
+        title: "Front-End",
+        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+      },
+      {
+        title: "Back-End",
+        items: ["Node.js", "API Rest", "Webhooks", "Server Actions", "Integrações Externas"],
+      },
+      {
+        title: "Banco de Dados",
+        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Versionamento",
+        items: ["Git", "GitHub", "Pull Requests", "Code Review"],
+      },
+      {
+        title: "Deploy & Automação",
+        items: ["Vercel", "N8N"],
+      },
+      {
+        title: "Inteligência Artificial",
+        items: ["Claude", "Cursor", "Codex"],
+      },
+      {
+        title: "Ferramentas & Plataformas",
+        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
+      },
+      {
+        title: "Sistemas Operacionais",
+        items: ["Windows", "Linux", "iOS"],
+      },
+    ],
   },
   services: {
     tag: "// o que eu faço",
@@ -280,7 +544,7 @@ const pt: Translation = {
     tag: "// trabalho selecionado",
     titleLine1: "Projetos Construídos",
     titleLine2: "para Resultados Reais",
-    desc: "Projetos reais em diferentes setores, cada um com stack tecnológico completo e propósito claro. Imagens em breve.",
+    desc: "Projetos reais em diferentes setores — o stack, o escopo e o propósito por trás de cada um.",
     projects: [
       {
         category: "Institucional · Educação",
@@ -326,6 +590,90 @@ const pt: Translation = {
       },
     ],
   },
+  experience: {
+    tag: "// trajetória",
+    titleLine1: "Experiência",
+    titleLine2: "Profissional",
+    desc: "Do suporte técnico e coordenação de TI até a engenharia full-stack — uma carreira construída com experiência real de produção.",
+    earlierLabel: "Experiências Anteriores",
+    jobs: [
+      {
+        company: "Parks Company",
+        role: "Desenvolvedor Full Stack",
+        bullets: [
+          "Desenvolvimento de landing pages, sites institucionais e aplicações web para clientes de diferentes nichos.",
+          "Criação de soluções front-end e full-stack utilizando React, Next.js, Node.js, TypeScript e JavaScript.",
+          "Modelagem, criação e manutenção de bancos de dados utilizando Supabase.",
+          "Implementação de formulários com validação e persistência de dados, além de integração com APIs e serviços externos.",
+          "Aplicação de Clean Code e refatoração contínua; versionamento com Git e GitHub, incluindo revisão de Pull Requests.",
+        ],
+        tech: ["React", "Next.js", "Node.js", "TypeScript", "Supabase", "Vercel", "Git"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Desenvolvedor Front-End",
+        bullets: [
+          "Desenvolvimento de landing pages, sites institucionais e aplicações web com HTML, CSS e JavaScript.",
+          "Implementação de interfaces modernas, reutilizáveis e escaláveis, com foco em performance e manutenção.",
+          "Aplicação de princípios de Clean Code e refatoração contínua para melhoria da base de código.",
+          "Gestão de demandas diárias via Slack e Monday; edição e deploy de sites via Hostinger.",
+          "Manutenção e customização de sites em WordPress.",
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Desenvolvedor Back-End",
+        bullets: [
+          "Desenvolvimento de landing pages, sites institucionais e aplicações web com HTML, CSS, JavaScript, TypeScript e Next.js.",
+          "Criação e manutenção de workflows de automação no N8N e integração de plataformas de compliance.",
+          "Análise e manutenção do banco de dados da empresa.",
+          "Trackeamento de cliques e vendas com RedTrack, metrificando conversões de campanhas.",
+          "Criação e manutenção da loja interna da empresa.",
+        ],
+        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        featured: true,
+      },
+      {
+        company: "TH Tecnologia",
+        role: "Coordenador de TI",
+        bullets: [
+          "Coordenação de RH e atendimento ao cliente, incluindo habilitação e desabilitação de parceiros.",
+          "Realização de treinamentos internos e externos e auditoria interna dos processos de atendimento.",
+          "Suporte técnico Windows e iOS, além de suporte interno e externo da empresa.",
+          "Criação e manutenção do site da empresa.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Mosaic Sistemas",
+        role: "Suporte Técnico",
+        bullets: [
+          "Gestão de dados de clientes e parceiros utilizando software interno de controle.",
+          "Análise de documentos para cadastro de empresas e suporte remoto para resolução de problemas.",
+          "Realização de treinamentos para clientes e parceiros; criação de apresentações de evolução de clientes.",
+          "Suporte Windows e SQL.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Jubarte Conveniência",
+        role: "Assistente Administrativo",
+        bullets: [
+          "Organização financeira, conciliação de cartões de crédito e apuração de horas extras e folha de pagamento.",
+          "Automatização de processos internos e controle contratual de fornecedores e parceiros.",
+          "Controle de estoque, preços e validades via software interno; responsável por pedidos de revenda.",
+          "Suporte técnico interno e externo da empresa.",
+        ],
+        tech: [],
+        featured: false,
+      },
+    ],
+  },
   process: {
     tag: "// como eu trabalho",
     titleLine1: "Processo Limpo,",
@@ -360,22 +708,23 @@ const pt: Translation = {
     titleLine2: "Que Vende.",
     desc: "Disponível para landing pages, funis e projetos full-stack. Entrega rápida. Resultados reais.",
   },
-  footer: "<leo.dev /> · Landing Pages & Desenvolvimento Full-Stack · © 2025",
+  footer: "<leo.dev /> · Desenvolvimento Full-Stack · © 2026",
 }
 
 const es: Translation = {
   nav: {
-    services: "Servicios",
+    about: "Sobre Mí",
+    skills: "Skills",
     work: "Trabajos",
-    process: "Proceso",
+    experience: "Experiencia",
     hire: "Contrátame",
   },
   hero: {
     eyebrow: "Disponible para nuevos proyectos · Desarrollador Full-Stack",
-    titleLine1: "Creo Páginas",
-    titleLine2: "Que Convierten.",
+    titleLine1: "Construyo Productos",
+    titleLine2: "Full-Stack Completos.",
     subtitle:
-      "Desarrollador full-stack especializado en landing pages de alta conversión, embudos de ventas completos y aplicaciones web modernas — construidas con Next.js, TypeScript, Supabase y principios de respuesta directa.",
+      "Desarrollador full-stack que crea landing pages, sitios institucionales, aplicaciones web y embudos de ventas completos — de principio a fin, desde la interfaz hasta la base de datos, integraciones y despliegue. Con Next.js, TypeScript, Node.js y Supabase en cada proyecto.",
     cta1: "Ver Mi Trabajo",
     cta2: "Hablemos →",
     scroll: "scroll",
@@ -383,8 +732,71 @@ const es: Translation = {
   stats: {
     projects: "Proyectos Entregados",
     experience: "Años de Experiencia",
-    stacks: "Stacks Tecnológicos",
+    stacks: "Stacks Principales",
     satisfaction: "% de Satisfacción",
+  },
+  about: {
+    tag: "// quién soy",
+    titleLine1: "Detrás del",
+    titleLine2: "Código",
+    bio: [
+      "Soy desarrollador full-stack de Santa Catarina, Brasil, y construyo landing pages, sitios institucionales y aplicaciones web de principio a fin — desde la interfaz hasta la base de datos, integraciones y despliegue.",
+      "Llegué al desarrollo pasando por soporte técnico, coordinación de TI y operaciones técnicas antes de dedicarme por completo a la ingeniería — esto define cómo trabajo: me importa tanto el entorno de producción y el código limpio como entregar rápido. Ya entregué proyectos para clientes en Brasil y Europa.",
+    ],
+    locationLabel: "Ubicación",
+    location: "Santa Catarina, Brasil",
+    availability: "Disponible para nuevos proyectos",
+    languagesLabel: "Idiomas",
+    languages: [
+      { name: "Portugués", level: "Nativo" },
+      { name: "Inglés", level: "Avanzado" },
+      { name: "Español", level: "Básico" },
+    ],
+    educationLabel: "Formación",
+    education: [
+      { degree: "Ingeniería de Software", period: "2025 — 2028" },
+      { degree: "Administración", period: "2019 — 2023" },
+    ],
+  },
+  skills: {
+    tag: "// stack técnico",
+    titleLine1: "Skills &",
+    titleLine2: "Herramientas",
+    desc: "Los lenguajes, frameworks y herramientas que uso para llevar un proyecto desde cero hasta el despliegue en producción.",
+    categories: [
+      {
+        title: "Front-End",
+        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+      },
+      {
+        title: "Back-End",
+        items: ["Node.js", "API REST", "Webhooks", "Server Actions", "Integraciones Externas"],
+      },
+      {
+        title: "Base de Datos",
+        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Versionado",
+        items: ["Git", "GitHub", "Pull Requests", "Code Review"],
+      },
+      {
+        title: "Despliegue & Automatización",
+        items: ["Vercel", "N8N"],
+      },
+      {
+        title: "Inteligencia Artificial",
+        items: ["Claude", "Cursor", "Codex"],
+      },
+      {
+        title: "Herramientas & Plataformas",
+        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
+      },
+      {
+        title: "Sistemas Operativos",
+        items: ["Windows", "Linux", "iOS"],
+      },
+    ],
   },
   services: {
     tag: "// qué hago",
@@ -426,7 +838,7 @@ const es: Translation = {
     tag: "// trabajo seleccionado",
     titleLine1: "Proyectos Construidos",
     titleLine2: "para Resultados Reales",
-    desc: "Proyectos reales en diferentes industrias, cada uno con stack tecnológico completo y propósito claro. Imágenes próximamente.",
+    desc: "Proyectos reales en diferentes industrias — el stack, el alcance y el propósito detrás de cada uno.",
     projects: [
       {
         category: "Institucional · Educación",
@@ -472,6 +884,90 @@ const es: Translation = {
       },
     ],
   },
+  experience: {
+    tag: "// trayectoria",
+    titleLine1: "Experiencia",
+    titleLine2: "Profesional",
+    desc: "Del soporte técnico y la coordinación de TI a la ingeniería full-stack — una carrera construida con experiencia real de producción.",
+    earlierLabel: "Experiencias Anteriores",
+    jobs: [
+      {
+        company: "Parks Company",
+        role: "Desarrollador Full Stack",
+        bullets: [
+          "Desarrollo de landing pages, sitios institucionales y aplicaciones web para clientes de diferentes nichos.",
+          "Creación de soluciones front-end y full-stack utilizando React, Next.js, Node.js, TypeScript y JavaScript.",
+          "Modelado, creación y mantenimiento de bases de datos utilizando Supabase.",
+          "Implementación de formularios con validación y persistencia de datos, e integración de APIs y servicios externos.",
+          "Aplicación de Clean Code y refactorización continua; versionado con Git y GitHub, incluyendo revisión de Pull Requests.",
+        ],
+        tech: ["React", "Next.js", "Node.js", "TypeScript", "Supabase", "Vercel", "Git"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Desarrollador Front-End",
+        bullets: [
+          "Desarrollo de landing pages, sitios institucionales y aplicaciones web con HTML, CSS y JavaScript.",
+          "Implementación de interfaces modernas, reutilizables y escalables, con foco en rendimiento y mantenimiento.",
+          "Aplicación de principios de Clean Code y refactorización continua para mejorar la base de código.",
+          "Gestión de tareas diarias mediante Slack y Monday; edición y despliegue de sitios vía Hostinger.",
+          "Mantenimiento y personalización de sitios en WordPress.",
+        ],
+        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
+        featured: true,
+      },
+      {
+        company: "Grupo Impetus",
+        role: "Desarrollador Back-End",
+        bullets: [
+          "Desarrollo de landing pages, sitios institucionales y aplicaciones web con HTML, CSS, JavaScript, TypeScript y Next.js.",
+          "Creación y mantenimiento de workflows de automatización en N8N e integración de plataformas de compliance.",
+          "Análisis y mantenimiento de la base de datos de la empresa.",
+          "Seguimiento de clics y ventas con RedTrack, midiendo conversiones de campañas.",
+          "Creación y mantenimiento de la tienda interna de la empresa.",
+        ],
+        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        featured: true,
+      },
+      {
+        company: "TH Tecnologia",
+        role: "Coordinador de TI",
+        bullets: [
+          "Coordinación de RH y atención al cliente, incluyendo habilitación y deshabilitación de socios.",
+          "Realización de capacitaciones internas y externas y auditoría interna de los procesos de atención.",
+          "Soporte técnico Windows e iOS, además de soporte interno y externo de la empresa.",
+          "Creación y mantenimiento del sitio web de la empresa.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Mosaic Sistemas",
+        role: "Soporte Técnico",
+        bullets: [
+          "Gestión de datos de clientes y socios utilizando software interno de control.",
+          "Análisis de documentos para registro de empresas y soporte remoto para resolución de problemas.",
+          "Realización de capacitaciones para clientes y socios; creación de presentaciones de evolución de clientes.",
+          "Soporte Windows y SQL.",
+        ],
+        tech: [],
+        featured: false,
+      },
+      {
+        company: "Jubarte Conveniência",
+        role: "Asistente Administrativo",
+        bullets: [
+          "Organización financiera, conciliación de tarjetas de crédito y cálculo de horas extra y nómina.",
+          "Automatización de procesos internos y control contractual de proveedores y socios.",
+          "Control de inventario, precios y vencimientos vía software interno; responsable de pedidos de reventa.",
+          "Soporte técnico interno y externo de la empresa.",
+        ],
+        tech: [],
+        featured: false,
+      },
+    ],
+  },
   process: {
     tag: "// cómo trabajo",
     titleLine1: "Proceso Limpio,",
@@ -506,7 +1002,7 @@ const es: Translation = {
     titleLine2: "Que Vende.",
     desc: "Disponible para landing pages, embudos y proyectos full-stack. Entrega rápida. Resultados reales.",
   },
-  footer: "<leo.dev /> · Landing Pages & Desarrollo Full-Stack · © 2025",
+  footer: "<leo.dev /> · Desarrollo Full-Stack · © 2026",
 }
 
 export const translations: Record<Lang, Translation> = { en, pt, es }

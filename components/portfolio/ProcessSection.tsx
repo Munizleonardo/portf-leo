@@ -6,12 +6,6 @@ import { ScrollReveal } from "./ScrollReveal"
 
 const steps_numbers = ["01", "02", "03", "04"]
 
-const tools = [
-  "HTML5", "CSS3", "JavaScript", "TypeScript", "Next.js", "Node.js",
-  "Supabase", "Vercel", "Direct Response", "Sales Funnels", "CRO",
-  "Hotmart", "Kiwify", "Eduzz",
-]
-
 export function ProcessSection() {
   const { t } = useLanguage()
   const { process } = t
@@ -35,16 +29,6 @@ export function ProcessSection() {
           <p className="text-[.98rem] font-light text-slate-600 leading-[1.8] max-w-[460px] mb-0">
             {process.desc}
           </p>
-          <div className="flex flex-wrap gap-[9px] mt-[30px]">
-            {tools.map((tool) => (
-              <span
-                key={tool}
-                className="font-mono text-[.72rem] text-slate-300 bg-[#0b1120] border border-sky-400/10 px-4 py-[7px] rounded-full transition-all duration-250 hover:border-sky-400 hover:text-sky-400 hover:bg-sky-400/8 hover:translate-y-[-2px] inline-block"
-              >
-                {tool}
-              </span>
-            ))}
-          </div>
         </ScrollReveal>
 
         {/* Right column */}

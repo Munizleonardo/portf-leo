@@ -30,7 +30,7 @@ export function ServicesSection() {
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-5">
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] auto-rows-fr gap-5">
         {services.cards.map((card, i) => (
           <ScrollReveal key={card.title} variant={variants[i]} delay={delays[i]}>
             <ServiceCard

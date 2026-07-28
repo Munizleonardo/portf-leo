@@ -7,6 +7,7 @@ const contacts = [
   { label: "✉️ Email",    href: "https://mail.google.com/mail/?view=cm&fs=1&to=munizzleonardo@gmail.com", target: "_blank" },
   { label: "💬 WhatsApp", href: "https://wa.me/5522981208003",                              target: "_blank" },
   { label: "🔗 LinkedIn", href: "https://www.linkedin.com/in/leonardo-muniz-ab17b718a/",   target: "_blank" },
+  { label: "💻 GitHub",   href: "https://github.com/Munizleonardo",                        target: "_blank" },
 ]
 
 export function CTASection() {

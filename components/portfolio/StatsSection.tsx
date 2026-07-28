@@ -9,8 +9,8 @@ export function StatsSection() {
 
   const stats = [
     { target: 30,  label: t.stats.projects },
-    { target: 5,   label: t.stats.experience },
-    { target: 6,   label: t.stats.stacks },
+    { target: 4,   label: t.stats.experience },
+    { target: 5,   label: t.stats.stacks },
     { target: 100, label: t.stats.satisfaction, suffix: "%" },
   ]
 

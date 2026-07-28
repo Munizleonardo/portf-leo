@@ -7,7 +7,7 @@ export function HeroSection() {
   const { t } = useLanguage()
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center text-center px-10 pt-[140px] pb-[100px] max-[900px]:pt-[120px] max-[900px]:px-5 max-[900px]:pb-[90px] relative z-2 overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center text-center px-10 pt-[140px] pb-[100px] max-[900px]:pt-[120px] max-[900px]:px-5 max-[900px]:pb-[50px] relative z-2 overflow-hidden">
       {/* Grid background */}
       <div
         className="absolute inset-0"
@@ -26,13 +26,13 @@ export function HeroSection() {
       />
 
       {/* Eyebrow */}
-      <div className="inline-flex items-center gap-[10px] font-mono text-[.75rem] text-sky-400 tracking-[2px] uppercase mb-[30px] opacity-0 animate-[heroFadeDown_0.8s_ease_0.1s_forwards]">
+      <div className="inline-flex items-center gap-[10px] font-mono text-[.75rem] text-sky-400 tracking-[2px] uppercase mb-[30px] max-[900px]:mb-[18px] opacity-0 animate-[heroFadeDown_0.8s_ease_0.1s_forwards]">
         <span className="w-[7px] h-[7px] bg-emerald-400 rounded-full animate-[dotBlink_1.8s_ease_infinite] shadow-[0_0_8px_#34d399]" />
         {t.hero.eyebrow}
       </div>
 
       {/* Title */}
-      <h1 className="text-[clamp(3.2rem,8vw,7rem)] font-black tracking-[-3px] leading-[.94] mb-[26px] text-slate-100 opacity-0 animate-[heroFadeUp_0.9s_ease_0.25s_forwards]">
+      <h1 className="text-[clamp(3.2rem,8vw,7rem)] font-black tracking-[-3px] leading-[.94] mb-[26px] max-[900px]:mb-[16px] text-slate-100 opacity-0 animate-[heroFadeUp_0.9s_ease_0.25s_forwards]">
         {t.hero.titleLine1}
         <br />
         <span
@@ -44,7 +44,7 @@ export function HeroSection() {
       </h1>
 
       {/* Subtitle */}
-      <p className="text-[1.08rem] font-light text-slate-500 max-w-[560px] leading-[1.8] mb-[46px] opacity-0 animate-[heroFadeUp_0.9s_ease_0.4s_forwards]">
+      <p className="text-[1.08rem] font-light text-slate-500 max-w-[560px] leading-[1.8] mb-[46px] max-[900px]:mb-[26px] opacity-0 animate-[heroFadeUp_0.9s_ease_0.4s_forwards]">
         {t.hero.subtitle}
       </p>
 
@@ -65,9 +65,9 @@ export function HeroSection() {
         </Link>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-[34px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 font-mono text-[.65rem] text-slate-500 tracking-[2px] opacity-0 animate-[heroFadeIn_1s_ease_1.2s_both]">
-        <div className="w-px h-[46px] bg-gradient-to-b from-sky-400 to-transparent animate-[scrollProgress_2s_ease_infinite]" />
+      {/* Scroll indicator — pinned to the viewport bottom on desktop; flows normally after the buttons on mobile so it can never overlap them on short screens */}
+      <div className="absolute bottom-[34px] left-1/2 -translate-x-1/2 max-[900px]:static max-[900px]:translate-x-0 max-[900px]:mt-10 flex flex-col items-center gap-2 max-[900px]:gap-1 font-mono text-[.65rem] text-slate-500 tracking-[2px] opacity-0 animate-[heroFadeIn_1s_ease_1.2s_both]">
+        <div className="w-px h-[46px] max-[900px]:h-[24px] bg-gradient-to-b from-sky-400 to-transparent animate-[scrollProgress_2s_ease_infinite]" />
         {t.hero.scroll}
       </div>
     </div>
