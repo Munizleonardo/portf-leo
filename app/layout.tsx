@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Leo · Full-Stack Developer",
+  title: "Leonardo Muniz",
   description:
     "Full-stack developer specializing in high-converting landing pages, complete sales funnels, and modern web applications.",
 }

@@ -15,16 +15,14 @@ export function StatsSection() {
   ]
 
   return (
-    <div className="relative z-2 bg-[#070b12] border-y border-sky-400/10 flex justify-center flex-wrap max-[900px]:flex-col">
-      {stats.map((s) => (
-        <ScrollReveal key={s.label} variant="up">
-          <StatItem
-            target={s.target}
-            label={s.label}
-            suffix={s.suffix ?? "+"}
-          />
-        </ScrollReveal>
-      ))}
+    <div className="border-y border-white/[0.07]">
+      <ScrollReveal>
+        <div className="mx-auto grid max-w-[1000px] grid-cols-4 divide-x divide-white/[0.07] max-[900px]:grid-cols-2 max-[900px]:divide-x-0 max-[900px]:[&>*:nth-child(n+3)]:border-t max-[900px]:[&>*:nth-child(n+3)]:border-white/[0.07]">
+          {stats.map((s) => (
+            <StatItem key={s.label} target={s.target} label={s.label} suffix={s.suffix ?? "+"} />
+          ))}
+        </div>
+      </ScrollReveal>
     </div>
   )
 }

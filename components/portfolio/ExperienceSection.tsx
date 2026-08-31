@@ -3,11 +3,7 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { ExperienceCard } from "./ExperienceCard"
 import { ScrollReveal } from "./ScrollReveal"
-
-const featuredVariants = ["up", "rotate", "flip"] as const
-const featuredDelays   = [0, 65, 130]
-const compactVariants  = ["left", "up", "right"] as const
-const compactDelays    = [0, 60, 120]
+import { SectionLabel } from "./SectionLabel"
 
 export function ExperienceSection() {
   const { t } = useLanguage()
@@ -17,30 +13,26 @@ export function ExperienceSection() {
 
   return (
     <section
-      className="max-w-[1180px] mx-auto px-10 pt-0 pb-[110px] max-[900px]:px-5 max-[900px]:pb-[70px] relative z-2"
+      className="mx-auto max-w-[1180px] px-10 pb-[120px] pt-0 max-[900px]:px-5 max-[900px]:pb-[80px]"
       id="experience"
     >
-      <ScrollReveal variant="right">
-        <span className="font-mono text-[.73rem] font-medium text-sky-400 tracking-[3px] uppercase mb-[14px] block">
+      <ScrollReveal>
+        <SectionLabel className="mb-7">
           {experience.tag}
-        </span>
-        <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-extrabold tracking-[-1.5px] leading-[1.08] text-slate-100 mb-[14px]">
+        </SectionLabel>
+        <h2 className="mb-4 text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-neutral-50">
           {experience.titleLine1}
           <br />
           {experience.titleLine2}
         </h2>
-        <p className="text-[.98rem] font-light text-slate-600 leading-[1.8] max-w-[460px] mb-[60px]">
+        <p className="mb-14 max-w-[460px] text-[0.98rem] font-light leading-[1.85] text-neutral-400">
           {experience.desc}
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] auto-rows-fr gap-6 mb-16">
+      <div className="mb-16 grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-6">
         {featured.map((job, i) => (
-          <ScrollReveal
-            key={`${job.company}-${job.role}`}
-            variant={featuredVariants[i % featuredVariants.length]}
-            delay={featuredDelays[i % featuredDelays.length]}
-          >
+          <ScrollReveal key={`${job.company}-${job.role}`} delay={(i % 3) * 70}>
             <ExperienceCard {...job} />
           </ScrollReveal>
         ))}
@@ -48,18 +40,14 @@ export function ExperienceSection() {
 
       {earlier.length > 0 && (
         <>
-          <ScrollReveal variant="up">
-            <div className="font-mono text-[.72rem] font-medium text-slate-600 tracking-[2px] uppercase mb-6">
+          <ScrollReveal>
+            <div className="mb-6 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-neutral-500">
               {experience.earlierLabel}
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] auto-rows-fr gap-4">
+          <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4">
             {earlier.map((job, i) => (
-              <ScrollReveal
-                key={`${job.company}-${job.role}`}
-                variant={compactVariants[i % compactVariants.length]}
-                delay={compactDelays[i % compactDelays.length]}
-              >
+              <ScrollReveal key={`${job.company}-${job.role}`} delay={(i % 3) * 60}>
                 <ExperienceCard {...job} />
               </ScrollReveal>
             ))}

@@ -1,85 +1,71 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { ArrowUpRight } from "lucide-react"
 import { StackBadge } from "./StackBadge"
 
-type TechType =
-  | "html" | "css"  | "js"   | "ts"   | "next"
-  | "node" | "supa" | "verc" | "api"  | "resp" | "dr"
-
-interface Tech {
-  readonly label: string
-  readonly type: TechType
-}
-
 interface ProjectCardProps {
-  emoji: string
-  gradient: string
   category: string
   title: string
   description: string
-  stack: readonly Tech[]
-  type: string
-  href?: string
+  stack: readonly string[]
+  repo?: string
 }
 
-export function ProjectCard({
-  emoji,
-  gradient,
-  category,
-  title,
-  description,
-  stack,
-  type,
-  href,
-}: ProjectCardProps) {
-  return (
-    <Card className="bg-[#0b1120] border border-sky-400/10 rounded-[16px] p-7 gap-0 ring-0 relative overflow-hidden h-full transition-[transform,border-color,box-shadow] duration-380 ease-[cubic-bezier(.22,.68,0,1.2)] hover:translate-y-[-7px] hover:scale-[1.012] hover:border-sky-400/22 hover:shadow-[0_24px_60px_rgba(0,0,0,.4),0_0_40px_rgba(56,189,248,.08)] group">
-      {/* Top accent bar */}
-      <div className="absolute top-0 left-0 right-0 h-[3px]" style={{ background: gradient }} />
+export function ProjectCard({ category, title, description, stack, repo }: ProjectCardProps) {
+  const base =
+    "group flex h-full flex-col rounded-[20px] border border-white/[0.07] bg-white/[0.02] p-7 transition-all duration-300 ease-out"
 
-      <CardContent className="p-0 flex flex-col gap-0 flex-1 min-h-0">
-        <div className="flex items-center justify-between mb-5">
-          <div
-            className="w-12 h-12 rounded-[12px] flex items-center justify-center text-[1.4rem] shrink-0"
-            style={{ background: gradient }}
-          >
-            {emoji}
-          </div>
-          {href ? (
-            <a
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-sky-400/10 border border-sky-400/22 flex items-center justify-center text-sky-400 text-[.85rem] shrink-0 transition-[background-color,transform,color] duration-250 group-hover:bg-sky-400 group-hover:text-[#030508] group-hover:rotate-45"
-            >
-              →
-            </a>
-          ) : (
-            <span className="font-mono text-[.6rem] text-slate-700 uppercase tracking-[1px] shrink-0">
-              Private
-            </span>
-          )}
-        </div>
-
-        <div className="font-mono text-[.68rem] text-sky-400 tracking-[2px] uppercase mb-[7px]">
+  const body = (
+    <>
+      <div className="mb-3 flex items-center justify-between gap-4">
+        <span className="text-[0.66rem] font-medium uppercase tracking-[0.18em] text-neutral-500">
           {category}
-        </div>
-        <h3 className="text-[1.12rem] font-bold text-slate-100 mb-[9px] tracking-[-0.4px]">
-          {title}
-        </h3>
-        <p className="text-[.845rem] font-light text-slate-600 leading-[1.75] mb-[18px]">
-          {description}
-        </p>
+        </span>
+        {repo ? (
+          <ArrowUpRight
+            className="h-4 w-4 shrink-0 text-neutral-500 transition-colors duration-250 group-hover:text-neutral-100"
+            strokeWidth={1.75}
+          />
+        ) : (
+          <span className="shrink-0 text-[0.58rem] font-medium uppercase tracking-[0.16em] text-neutral-600">
+            Privado
+          </span>
+        )}
+      </div>
 
-        <div className="flex flex-wrap gap-[5px] mt-auto">
-          {stack.map((tech) => (
-            <StackBadge key={tech.label} label={tech.label} type={tech.type} />
-          ))}
-        </div>
-      </CardContent>
+      <h3 className="mb-[9px] text-[1.12rem] font-semibold tracking-[-0.01em] text-neutral-50">
+        {title}
+      </h3>
+      <p className="mb-5 text-[0.845rem] font-light leading-[1.7] text-neutral-400">
+        {description}
+      </p>
 
-      <CardFooter className="p-0 pt-5 mt-5 bg-transparent border-t border-sky-400/10 rounded-none">
-        <span className="font-mono text-[.66rem] text-slate-600">{`// ${type}`}</span>
-      </CardFooter>
-    </Card>
+      <div className="mt-auto flex flex-wrap gap-[5px]">
+        {stack.map((s) => (
+          <StackBadge key={s} label={s} />
+        ))}
+      </div>
+
+      {repo && (
+        <div className="mt-5 flex items-center gap-1.5 border-t border-white/[0.07] pt-4 text-[0.72rem] font-medium text-neutral-400 transition-colors duration-250 group-hover:text-neutral-100">
+          Ver repositório
+          <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+        </div>
+      )}
+    </>
   )
+
+  if (repo) {
+    return (
+      <a
+        href={repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${title} — repositório no GitHub`}
+        className={`${base} hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.035]`}
+      >
+        {body}
+      </a>
+    )
+  }
+
+  return <div className={base}>{body}</div>
 }

@@ -2,30 +2,15 @@
 
 import { useEffect, useRef, useState } from "react"
 
-type RevealVariant = "up" | "left" | "right" | "scale" | "rotate" | "flip"
-
-const variantClass: Record<RevealVariant, string> = {
-  up:     "rv-init",
-  left:   "rv-l-init",
-  right:  "rv-r-init",
-  scale:  "rv-sc-init",
-  rotate: "rv-ro-init",
-  flip:   "rv-fl-init",
-}
-
 interface ScrollRevealProps {
   children: React.ReactNode
-  variant?: RevealVariant
+  /** Kept for call-site compatibility; every reveal now uses the same quiet fade-up. */
+  variant?: "up" | "left" | "right" | "scale" | "rotate" | "flip"
   delay?: number
   className?: string
 }
 
-export function ScrollReveal({
-  children,
-  variant = "up",
-  delay = 0,
-  className = "",
-}: ScrollRevealProps) {
+export function ScrollReveal({ children, delay = 0, className = "" }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
 
@@ -40,7 +25,7 @@ export function ScrollReveal({
           obs.unobserve(el)
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
     )
     obs.observe(el)
     return () => obs.disconnect()
@@ -49,7 +34,8 @@ export function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`${variantClass[variant]} ${visible ? "rv-visible" : ""} ${className}`}
+      style={{ transitionDelay: visible ? `${delay}ms` : undefined }}
+      className={`rv-init ${visible ? "rv-visible" : ""} ${className}`}
     >
       {children}
     </div>

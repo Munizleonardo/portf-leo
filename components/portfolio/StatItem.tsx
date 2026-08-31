@@ -41,12 +41,12 @@ export function StatItem({ target, label, suffix = "+" }: StatItemProps) {
   return (
     <div
       ref={ref}
-      className="flex-1 min-w-[180px] text-center px-5 py-[38px] border-r border-sky-400/10 last:border-r-0 max-[900px]:border-r-0 max-[900px]:border-b max-[900px]:border-sky-400/10 transition-colors duration-300 hover:bg-sky-400/4"
+      className="h-full px-5 py-[44px] text-center transition-colors duration-300 hover:bg-white/[0.02] max-[900px]:px-3 max-[900px]:py-6"
     >
-      <div className="font-mono text-[2.5rem] font-bold text-sky-400 leading-none mb-[6px] [text-shadow:0_0_30px_rgba(56,189,248,.35)]">
+      <div className="mb-[6px] text-[2.6rem] font-semibold leading-none tracking-[-0.02em] text-neutral-50 tabular-nums max-[900px]:mb-1 max-[900px]:text-[1.7rem]">
         {count}{suffix}
       </div>
-      <div className="text-[.75rem] font-medium tracking-[1.5px] uppercase text-slate-600">
+      <div className="text-[0.72rem] font-medium uppercase tracking-[0.18em] text-neutral-500 max-[900px]:text-[0.58rem] max-[900px]:tracking-[0.12em]">
         {label}
       </div>
     </div>

@@ -3,8 +3,9 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { ProcessStep } from "./ProcessStep"
 import { ScrollReveal } from "./ScrollReveal"
+import { SectionLabel } from "./SectionLabel"
 
-const steps_numbers = ["01", "02", "03", "04"]
+const steps_numbers = ["01", "02", "03", "04", "05"]
 
 export function ProcessSection() {
   const { t } = useLanguage()
@@ -12,27 +13,27 @@ export function ProcessSection() {
 
   return (
     <section
-      className="max-w-[1180px] mx-auto px-10 pt-0 pb-[110px] max-[900px]:px-5 max-[900px]:pb-[70px] relative z-2"
+      className="mx-auto max-w-[1180px] px-10 pb-[120px] pt-0 max-[900px]:px-5 max-[900px]:pb-[80px]"
       id="process"
     >
-      <div className="grid grid-cols-2 gap-[80px] items-start max-[900px]:grid-cols-1 max-[900px]:gap-12">
+      <div className="grid grid-cols-2 items-start gap-[80px] max-[900px]:grid-cols-1 max-[900px]:gap-12">
         {/* Left column */}
-        <ScrollReveal variant="left">
-          <span className="font-mono text-[.73rem] font-medium text-sky-400 tracking-[3px] uppercase mb-[14px] block">
+        <ScrollReveal>
+          <SectionLabel className="mb-7">
             {process.tag}
-          </span>
-          <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-extrabold tracking-[-1.5px] leading-[1.08] text-slate-100 mb-[14px]">
+          </SectionLabel>
+          <h2 className="mb-4 text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-neutral-50">
             {process.titleLine1}
             <br />
             {process.titleLine2}
           </h2>
-          <p className="text-[.98rem] font-light text-slate-600 leading-[1.8] max-w-[460px] mb-0">
+          <p className="max-w-[460px] text-[0.98rem] font-light leading-[1.85] text-neutral-400">
             {process.desc}
           </p>
         </ScrollReveal>
 
         {/* Right column */}
-        <ScrollReveal variant="right">
+        <ScrollReveal>
           <div className="flex flex-col">
             {process.steps.map((step, i) => (
               <ProcessStep

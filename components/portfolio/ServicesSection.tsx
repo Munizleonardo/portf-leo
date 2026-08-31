@@ -1,11 +1,12 @@
 "use client"
 
+import { Target, Repeat, Building2, Boxes } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { ServiceCard } from "./ServiceCard"
 import { ScrollReveal } from "./ScrollReveal"
+import { SectionLabel } from "./SectionLabel"
 
-const variants = ["up", "rotate", "flip", "scale"] as const
-const delays   = [0, 65, 130, 195]
+const icons = [Target, Repeat, Building2, Boxes]
 
 export function ServicesSection() {
   const { t } = useLanguage()
@@ -13,28 +14,28 @@ export function ServicesSection() {
 
   return (
     <section
-      className="max-w-[1180px] mx-auto px-10 py-[110px] max-[900px]:px-5 max-[900px]:py-[70px] relative z-2"
+      className="mx-auto max-w-[1180px] px-10 py-[120px] max-[900px]:px-5 max-[900px]:py-[80px]"
       id="services"
     >
-      <ScrollReveal variant="left">
-        <span className="font-mono text-[.73rem] font-medium text-sky-400 tracking-[3px] uppercase mb-[14px] block">
+      <ScrollReveal>
+        <SectionLabel className="mb-7">
           {services.tag}
-        </span>
-        <h2 className="text-[clamp(2rem,4vw,3.2rem)] font-extrabold tracking-[-1.5px] leading-[1.08] text-slate-100 mb-[14px]">
+        </SectionLabel>
+        <h2 className="mb-4 text-[clamp(2rem,4vw,3.1rem)] font-semibold leading-[1.1] tracking-[-0.02em] text-neutral-50">
           {services.titleLine1}
           <br />
           {services.titleLine2}
         </h2>
-        <p className="text-[.98rem] font-light text-slate-600 leading-[1.8] max-w-[460px] mb-[60px]">
+        <p className="mb-14 max-w-[460px] text-[0.98rem] font-light leading-[1.85] text-neutral-400">
           {services.desc}
         </p>
       </ScrollReveal>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] auto-rows-fr gap-5">
+      <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-4">
         {services.cards.map((card, i) => (
-          <ScrollReveal key={card.title} variant={variants[i]} delay={delays[i]}>
+          <ScrollReveal key={card.title} delay={(i % 4) * 70}>
             <ServiceCard
-              icon={card.icon}
+              icon={icons[i % icons.length]}
               title={card.title}
               description={card.description}
               tags={card.tags}
