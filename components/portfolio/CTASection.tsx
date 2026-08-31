@@ -1,13 +1,16 @@
 "use client"
 
+import { Mail } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { ScrollReveal } from "./ScrollReveal"
+import { SectionLabel } from "./SectionLabel"
+import { GitHubIcon, LinkedInIcon, WhatsAppIcon } from "./BrandIcons"
 
 const contacts = [
-  { label: "✉️ Email",    href: "https://mail.google.com/mail/?view=cm&fs=1&to=munizzleonardo@gmail.com", target: "_blank" },
-  { label: "💬 WhatsApp", href: "https://wa.me/5522981208003",                              target: "_blank" },
-  { label: "🔗 LinkedIn", href: "https://www.linkedin.com/in/leonardo-muniz-ab17b718a/",   target: "_blank" },
-  { label: "💻 GitHub",   href: "https://github.com/Munizleonardo",                        target: "_blank" },
+  { icon: Mail,         label: "Email",    href: "https://mail.google.com/mail/?view=cm&fs=1&to=munizzleonardo@gmail.com" },
+  { icon: WhatsAppIcon, label: "WhatsApp", href: "https://wa.me/5522981208003" },
+  { icon: LinkedInIcon, label: "LinkedIn", href: "https://www.linkedin.com/in/leonardo-muniz-ab17b718a/" },
+  { icon: GitHubIcon,   label: "GitHub",   href: "https://github.com/Munizleonardo" },
 ]
 
 export function CTASection() {
@@ -15,41 +18,34 @@ export function CTASection() {
   const { cta } = t
 
   return (
-    <div className="relative z-2 bg-[#070b12] border-t border-sky-400/10 text-center px-10 py-[110px] overflow-hidden" id="contact">
-      {/* Glow */}
-      <div
-        className="absolute w-[700px] h-[500px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none animate-[pulseGlow_5s_ease_infinite]"
-        style={{ background: "radial-gradient(ellipse,rgba(56,189,248,.12) 0%,transparent 70%)" }}
-      />
+    <div
+      className="border-t border-white/[0.07] px-10 py-[130px] text-center max-[900px]:px-5 max-[900px]:py-[90px]"
+      id="contact"
+    >
+      <ScrollReveal>
+        <SectionLabel className="mb-7 text-center">
+          {cta.tag}
+        </SectionLabel>
 
-      <span className="font-mono text-[.73rem] font-medium text-sky-400 tracking-[3px] uppercase mb-[14px] block relative z-1">
-        {cta.tag}
-      </span>
+        <h2 className="mb-4 text-[clamp(2.4rem,5vw,4rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-neutral-50">
+          {cta.titleLine1}
+          <br />
+          <span className="text-neutral-500">{cta.titleLine2}</span>
+        </h2>
 
-      <h2 className="text-[clamp(2.4rem,5vw,4.2rem)] font-black tracking-[-2px] text-slate-100 relative z-1 mb-4">
-        {cta.titleLine1}
-        <br />
-        <span
-          className="bg-clip-text text-transparent"
-          style={{ backgroundImage: "linear-gradient(100deg,#38bdf8,#22d3ee)" }}
-        >
-          {cta.titleLine2}
-        </span>
-      </h2>
+        <p className="mb-[42px] text-base font-light text-neutral-400">{cta.desc}</p>
+      </ScrollReveal>
 
-      <p className="text-slate-600 text-base font-light mb-[42px] relative z-1">
-        {cta.desc}
-      </p>
-
-      <div className="flex justify-center gap-[14px] flex-wrap relative z-1">
-        {contacts.map((c) => (
-          <ScrollReveal key={c.label} variant="up">
+      <div className="flex flex-wrap justify-center gap-[12px]">
+        {contacts.map((c, i) => (
+          <ScrollReveal key={c.label} delay={i * 60}>
             <a
               href={c.href}
-              target={c.target}
-              rel={c.target === "_blank" ? "noopener noreferrer" : undefined}
-              className="flex items-center gap-[9px] bg-[#0b1120] border border-sky-400/10 text-slate-300 px-6 py-[13px] rounded-[10px] no-underline font-medium text-[.875rem] transition-all duration-250 hover:border-sky-400 hover:translate-y-[-3px] hover:bg-sky-400/6 hover:text-slate-100"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-[10px] rounded-[12px] border border-white/[0.09] bg-white/[0.02] px-6 py-[14px] text-[0.875rem] font-medium text-neutral-300 no-underline transition-all duration-250 hover:-translate-y-0.5 hover:border-white/30 hover:bg-white/[0.04] hover:text-neutral-50"
             >
+              <c.icon className="h-[16px] w-[16px]" />
               {c.label}
             </a>
           </ScrollReveal>

@@ -52,8 +52,10 @@ export interface Translation {
   }
   hero: {
     eyebrow: string
-    titleLine1: string
-    titleLine2: string
+    /** Headline line 1 (before the persistent "Full-Stack"). */
+    titleLead: string
+    /** Headline tail (after "Full-Stack"). */
+    titleTail: string
     subtitle: string
     cta1: string
     cta2: string
@@ -133,8 +135,8 @@ const en: Translation = {
   },
   hero: {
     eyebrow: "Available for new projects · Full-Stack Developer",
-    titleLine1: "I Build Full-Stack",
-    titleLine2: "Digital Products.",
+    titleLead: "I Build",
+    titleTail: "Digital Products.",
     subtitle:
       "Full-stack developer crafting landing pages, institutional websites, web applications, and complete sales funnels — end to end, from interface to database, integrations, and deploy. Powered by Next.js, TypeScript, Node.js, and Supabase.",
     cta1: "See My Work",
@@ -145,14 +147,14 @@ const en: Translation = {
     projects: "Projects Delivered",
     experience: "Years Experience",
     stacks: "Core Tech Stacks",
-    satisfaction: "% Satisfaction",
+    satisfaction: "Client Satisfaction",
   },
   about: {
-    tag: "// who i am",
+    tag: "Who I Am",
     titleLine1: "Behind the",
     titleLine2: "Code",
     bio: [
-      "I'm a full-stack developer based in Santa Catarina, Brazil, building landing pages, institutional websites, and web applications end to end — from the interface down to the database, integrations, and deploy.",
+      "I'm a full-stack developer building landing pages, institutional websites, and web applications end to end — from the interface down to the database, integrations, and deploy.",
       "My path into development came through IT support, coordination, and technical operations before moving into full-time engineering — which shapes how I work: I care about production readiness, clean code, and clear communication as much as I care about shipping fast. I've delivered projects for clients in Brazil and Europe.",
     ],
     locationLabel: "Location",
@@ -171,7 +173,7 @@ const en: Translation = {
     ],
   },
   skills: {
-    tag: "// tech stack",
+    tag: "Tech Stack",
     titleLine1: "Skills &",
     titleLine2: "Tools",
     desc: "The languages, frameworks, and tools I use to take a project from a blank file to a production deploy.",
@@ -211,7 +213,7 @@ const en: Translation = {
     ],
   },
   services: {
-    tag: "// what i do",
+    tag: "What I Do",
     titleLine1: "Full-Stack Funnel",
     titleLine2: "Development",
     desc: "From pixel-perfect landing pages to complete sales funnels and complex web applications — I handle the full stack.",
@@ -247,7 +249,7 @@ const en: Translation = {
     ],
   },
   portfolio: {
-    tag: "// selected work",
+    tag: "Selected Work",
     titleLine1: "Projects Built",
     titleLine2: "for Real Results",
     desc: "Real projects across different industries — the stack, the scope, and the purpose behind each one.",
@@ -274,11 +276,11 @@ const en: Translation = {
         type: "institutional website",
       },
       {
-        category: "Landing Pages · Multi-Niche",
-        title: "Professional Landing Pages",
+        category: "Landing Page · Barbershop",
+        title: "Ytamar Barbershop",
         description:
-          "High-converting landing pages across multiple niches — psychologists, architects, lawyers, and engineers. Each page tailored to the audience, offer, and specific conversion goal.",
-        type: "landing pages",
+          "High-converting landing page for a barbershop — services, haircut gallery, team, and location, with a direct WhatsApp booking CTA. Built with Next.js and TypeScript, mobile-first and tuned for fast loading and SEO.",
+        type: "landing page",
       },
       {
         category: "Sales Funnel · Direct Response",
@@ -297,7 +299,7 @@ const en: Translation = {
     ],
   },
   experience: {
-    tag: "// career path",
+    tag: "Career Path",
     titleLine1: "Professional",
     titleLine2: "Experience",
     desc: "From technical support and IT coordination to full-stack engineering — a career built on hands-on production experience.",
@@ -318,28 +320,16 @@ const en: Translation = {
       },
       {
         company: "Grupo Impetus",
-        role: "Front-End Developer",
+        role: "Full-Stack Developer",
         bullets: [
-          "Built landing pages, institutional websites, and web applications using HTML, CSS, and JavaScript.",
+          "Built landing pages, institutional websites, and web applications across the full stack with HTML, CSS, JavaScript, TypeScript, and Next.js.",
           "Implemented modern, reusable, and scalable interfaces focused on performance and maintainability.",
-          "Applied Clean Code principles and continuous refactoring to improve the codebase.",
-          "Managed daily demands using Slack and Monday; edited and deployed sites via Hostinger.",
+          "Created and maintained automation workflows in N8N and integrated compliance platforms.",
+          "Analyzed and maintained the company's database and internal store; tracked clicks and sales with RedTrack across campaigns.",
+          "Applied Clean Code and continuous refactoring; managed daily demands via Slack and Monday, deployed via Hostinger.",
           "Maintained and customized WordPress-based sites.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
-        featured: true,
-      },
-      {
-        company: "Grupo Impetus",
-        role: "Back-End Developer",
-        bullets: [
-          "Built landing pages, institutional websites, and web applications with HTML, CSS, JavaScript, TypeScript, and Next.js.",
-          "Created and maintained automation workflows in N8N and integrated compliance platforms.",
-          "Analyzed and maintained the company's database.",
-          "Tracked clicks and sales with RedTrack, measuring conversions across campaigns.",
-          "Built and maintained the company's internal store.",
-        ],
-        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -381,40 +371,45 @@ const en: Translation = {
     ],
   },
   process: {
-    tag: "// how i work",
-    titleLine1: "Clean Process,",
+    tag: "How I Work",
+    titleLine1: "Engineering Process,",
     titleLine2: "Real Delivery",
-    desc: "No unnecessary back-and-forth. A clear, efficient process that respects your time and ships on schedule.",
+    desc: "A lean, predictable engineering process. Every phase has explicit deliverables and acceptance criteria, so there is no rework and no surprise on the timeline — from requirements gathering to a monitored production deploy.",
     steps: [
       {
-        title: "Discovery & Alignment",
+        title: "Discovery & Requirements",
         description:
-          "We define the goal, audience, offer, and the exact conversion action the page needs to drive before anything is built.",
+          "I map the business goal, target audience, user journey, and success metrics, then translate them into functional and non-functional requirements: needed integrations, the data model, authentication and permission rules, performance budget, and technical constraints — documented before anything is estimated.",
       },
       {
-        title: "Strategy & Structure",
+        title: "Architecture & Planning",
         description:
-          "Page architecture planned around DR principles — headline, hook, social proof, offer, CTA — before a single line of code is written.",
+          "Stack decisions, component architecture, routing, and the database schema (Supabase / PostgreSQL) with its RLS policies. API contracts, third-party integrations, screen states, edge cases, and acceptance criteria are specified up front so implementation is execution, not guesswork.",
       },
       {
         title: "Development",
         description:
-          "Clean, fast, mobile-first code. Every detail crafted to reduce friction and guide the visitor toward conversion.",
+          "Implementation in TypeScript with Next.js and Node.js — typed, component-driven, mobile-first code. Server actions and REST/webhook integrations, form validation and error handling, accessible semantic markup, and everything versioned in Git through reviewed pull requests with continuous refactoring.",
       },
       {
-        title: "Delivery & Support",
+        title: "QA & Performance",
         description:
-          "Final files or live deployment, plus revision support. You launch with confidence and full control.",
+          "End-to-end review of every flow: happy paths and edge cases, loading and empty and error states, and responsive behaviour across breakpoints. Accessibility pass and performance tuning against Core Web Vitals — image optimization, code-splitting, and caching.",
+      },
+      {
+        title: "Deploy & Support",
+        description:
+          "Continuous deployment on Vercel with environment variables, custom domain, and basic observability (logs and error tracking) in place. Handover with documentation, plus revision support so you go live with full control of the codebase.",
       },
     ],
   },
   cta: {
-    tag: "// ready to start?",
+    tag: "Ready to Start?",
     titleLine1: "Let's Build Something",
     titleLine2: "That Sells.",
     desc: "Available for landing pages, funnels, and full-stack projects. Fast turnaround. Real results.",
   },
-  footer: "<leo.dev /> · Full-Stack Development · © 2026",
+  footer: "Leonardo Muniz — Full-Stack Development · © 2026",
 }
 
 const pt: Translation = {
@@ -427,8 +422,8 @@ const pt: Translation = {
   },
   hero: {
     eyebrow: "Disponível para novos projetos · Desenvolvedor Full-Stack",
-    titleLine1: "Eu Construo Produtos",
-    titleLine2: "Full-Stack Completos.",
+    titleLead: "Eu Construo Produtos",
+    titleTail: "Completos.",
     subtitle:
       "Desenvolvedor full-stack que cria landing pages, sites institucionais, aplicações web e funis de vendas completos — do front-end ao banco de dados, integrações e deploy. Com Next.js, TypeScript, Node.js e Supabase em cada projeto.",
     cta1: "Ver Meus Trabalhos",
@@ -439,14 +434,14 @@ const pt: Translation = {
     projects: "Projetos Entregues",
     experience: "Anos de Experiência",
     stacks: "Stacks Principais",
-    satisfaction: "% de Satisfação",
+    satisfaction: "de Satisfação",
   },
   about: {
-    tag: "// quem eu sou",
+    tag: "Quem eu sou",
     titleLine1: "Por Trás do",
     titleLine2: "Código",
     bio: [
-      "Sou desenvolvedor full-stack de Santa Catarina, Brasil, e construo landing pages, sites institucionais e aplicações web de ponta a ponta — da interface ao banco de dados, integrações e deploy.",
+      "Sou desenvolvedor full-stack e construo landing pages, sites institucionais e aplicações web de ponta a ponta — da interface ao banco de dados, integrações e deploy.",
       "Cheguei ao desenvolvimento passando por suporte técnico, coordenação de TI e operações técnicas antes de migrar para a engenharia em tempo integral — isso molda como eu trabalho: me importo tanto com ambiente de produção e código limpo quanto com entregar rápido. Já entreguei projetos para clientes no Brasil e na Europa.",
     ],
     locationLabel: "Localização",
@@ -465,7 +460,7 @@ const pt: Translation = {
     ],
   },
   skills: {
-    tag: "// stack técnico",
+    tag: "Stack técnico",
     titleLine1: "Skills &",
     titleLine2: "Ferramentas",
     desc: "As linguagens, frameworks e ferramentas que uso para levar um projeto do zero até o deploy em produção.",
@@ -505,7 +500,7 @@ const pt: Translation = {
     ],
   },
   services: {
-    tag: "// o que eu faço",
+    tag: "O que eu faço",
     titleLine1: "Desenvolvimento Full-Stack",
     titleLine2: "de Funis",
     desc: "De landing pages pixel-perfeitas a funis de vendas completos e aplicações web complexas — eu cuido do stack completo.",
@@ -541,7 +536,7 @@ const pt: Translation = {
     ],
   },
   portfolio: {
-    tag: "// trabalho selecionado",
+    tag: "Trabalho selecionado",
     titleLine1: "Projetos Construídos",
     titleLine2: "para Resultados Reais",
     desc: "Projetos reais em diferentes setores — o stack, o escopo e o propósito por trás de cada um.",
@@ -568,11 +563,11 @@ const pt: Translation = {
         type: "site institucional",
       },
       {
-        category: "Landing Pages · Multi-Nicho",
-        title: "Landing Pages Profissionais",
+        category: "Landing Page · Barbearia",
+        title: "Ytamar Barbershop",
         description:
-          "Landing pages de alta conversão em múltiplos nichos — psicólogos, arquitetos, advogados e engenheiros. Cada página adaptada ao público, oferta e objetivo de conversão específico.",
-        type: "landing pages",
+          "Landing page de alta conversão para uma barbearia — serviços, galeria de cortes, equipe e localização, com CTA direto de agendamento pelo WhatsApp. Construída em Next.js e TypeScript, mobile-first e otimizada para carregamento rápido e SEO.",
+        type: "landing page",
       },
       {
         category: "Funil de Vendas · Resposta Direta",
@@ -591,7 +586,7 @@ const pt: Translation = {
     ],
   },
   experience: {
-    tag: "// trajetória",
+    tag: "Trajetória",
     titleLine1: "Experiência",
     titleLine2: "Profissional",
     desc: "Do suporte técnico e coordenação de TI até a engenharia full-stack — uma carreira construída com experiência real de produção.",
@@ -599,7 +594,7 @@ const pt: Translation = {
     jobs: [
       {
         company: "Parks Company",
-        role: "Desenvolvedor Full Stack",
+        role: "Desenvolvedor Full-Stack",
         bullets: [
           "Desenvolvimento de landing pages, sites institucionais e aplicações web para clientes de diferentes nichos.",
           "Criação de soluções front-end e full-stack utilizando React, Next.js, Node.js, TypeScript e JavaScript.",
@@ -612,28 +607,16 @@ const pt: Translation = {
       },
       {
         company: "Grupo Impetus",
-        role: "Desenvolvedor Front-End",
+        role: "Desenvolvedor Full-Stack",
         bullets: [
-          "Desenvolvimento de landing pages, sites institucionais e aplicações web com HTML, CSS e JavaScript.",
+          "Desenvolvimento full-stack de landing pages, sites institucionais e aplicações web com HTML, CSS, JavaScript, TypeScript e Next.js.",
           "Implementação de interfaces modernas, reutilizáveis e escaláveis, com foco em performance e manutenção.",
-          "Aplicação de princípios de Clean Code e refatoração contínua para melhoria da base de código.",
-          "Gestão de demandas diárias via Slack e Monday; edição e deploy de sites via Hostinger.",
+          "Criação e manutenção de workflows de automação no N8N e integração de plataformas de compliance.",
+          "Análise e manutenção do banco de dados e da loja interna da empresa; trackeamento de cliques e vendas com RedTrack nas campanhas.",
+          "Aplicação de Clean Code e refatoração contínua; gestão de demandas via Slack e Monday, deploy via Hostinger.",
           "Manutenção e customização de sites em WordPress.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
-        featured: true,
-      },
-      {
-        company: "Grupo Impetus",
-        role: "Desenvolvedor Back-End",
-        bullets: [
-          "Desenvolvimento de landing pages, sites institucionais e aplicações web com HTML, CSS, JavaScript, TypeScript e Next.js.",
-          "Criação e manutenção de workflows de automação no N8N e integração de plataformas de compliance.",
-          "Análise e manutenção do banco de dados da empresa.",
-          "Trackeamento de cliques e vendas com RedTrack, metrificando conversões de campanhas.",
-          "Criação e manutenção da loja interna da empresa.",
-        ],
-        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -675,40 +658,45 @@ const pt: Translation = {
     ],
   },
   process: {
-    tag: "// como eu trabalho",
-    titleLine1: "Processo Limpo,",
+    tag: "Como eu trabalho",
+    titleLine1: "Processo de Engenharia,",
     titleLine2: "Entrega Real",
-    desc: "Sem vai-e-vem desnecessário. Um processo claro e eficiente que respeita seu tempo e entrega no prazo.",
+    desc: "Um processo de engenharia enxuto e previsível. Cada etapa tem entregáveis e critérios de aceite explícitos, então não há retrabalho nem surpresa no prazo — do levantamento de requisitos ao deploy monitorado em produção.",
     steps: [
       {
-        title: "Descoberta & Alinhamento",
+        title: "Descoberta & Requisitos",
         description:
-          "Definimos o objetivo, o público, a oferta e a ação de conversão exata que a página precisa gerar antes de qualquer coisa ser construída.",
+          "Mapeio o objetivo de negócio, o público, a jornada do usuário e as métricas de sucesso, e traduzo tudo em requisitos funcionais e não-funcionais: integrações necessárias, modelo de dados, regras de autenticação e permissão, orçamento de performance e restrições técnicas — documentados antes de qualquer estimativa.",
       },
       {
-        title: "Estratégia & Estrutura",
+        title: "Arquitetura & Planejamento",
         description:
-          "Arquitetura da página planejada com base nos princípios de DR — headline, gancho, prova social, oferta, CTA — antes de uma única linha de código ser escrita.",
+          "Definição da stack, da arquitetura de componentes, do roteamento e do schema do banco (Supabase / PostgreSQL) com suas políticas de RLS. Contratos de API, integrações de terceiros, estados de tela, casos de borda e critérios de aceite especificados antes da primeira linha de código.",
       },
       {
         title: "Desenvolvimento",
         description:
-          "Código limpo, rápido e mobile-first. Cada detalhe elaborado para reduzir atrito e guiar o visitante em direção à conversão.",
+          "Implementação em TypeScript com Next.js e Node.js — código tipado, componentizado e mobile-first. Server actions e integrações REST/webhook, validação de formulários e tratamento de erros, marcação semântica e acessível, tudo versionado no Git com Pull Requests revisados e refatoração contínua.",
       },
       {
-        title: "Entrega & Suporte",
+        title: "QA & Performance",
         description:
-          "Arquivos finais ou deploy ao vivo, além de suporte a revisões. Você lança com confiança e controle total.",
+          "Revisão ponta a ponta de cada fluxo: caminhos felizes e casos de borda, estados de carregamento, vazio e erro, e comportamento responsivo em todos os breakpoints. Passagem de acessibilidade e ajuste de performance com base nos Core Web Vitals — otimização de imagens, code-splitting e cache.",
+      },
+      {
+        title: "Deploy & Suporte",
+        description:
+          "Deploy contínuo na Vercel com variáveis de ambiente, domínio próprio e observabilidade básica (logs e rastreio de erros) configurados. Entrega com documentação, além de suporte a revisões para você subir com controle total da base de código.",
       },
     ],
   },
   cta: {
-    tag: "// pronto para começar?",
+    tag: "Pronto para começar?",
     titleLine1: "Vamos Construir Algo",
     titleLine2: "Que Vende.",
     desc: "Disponível para landing pages, funis e projetos full-stack. Entrega rápida. Resultados reais.",
   },
-  footer: "<leo.dev /> · Desenvolvimento Full-Stack · © 2026",
+  footer: "Leonardo Muniz — Desenvolvimento Full-Stack · © 2026",
 }
 
 const es: Translation = {
@@ -721,8 +709,8 @@ const es: Translation = {
   },
   hero: {
     eyebrow: "Disponible para nuevos proyectos · Desarrollador Full-Stack",
-    titleLine1: "Construyo Productos",
-    titleLine2: "Full-Stack Completos.",
+    titleLead: "Construyo Productos",
+    titleTail: "Completos.",
     subtitle:
       "Desarrollador full-stack que crea landing pages, sitios institucionales, aplicaciones web y embudos de ventas completos — de principio a fin, desde la interfaz hasta la base de datos, integraciones y despliegue. Con Next.js, TypeScript, Node.js y Supabase en cada proyecto.",
     cta1: "Ver Mi Trabajo",
@@ -733,14 +721,14 @@ const es: Translation = {
     projects: "Proyectos Entregados",
     experience: "Años de Experiencia",
     stacks: "Stacks Principales",
-    satisfaction: "% de Satisfacción",
+    satisfaction: "de Satisfacción",
   },
   about: {
-    tag: "// quién soy",
+    tag: "Quién soy",
     titleLine1: "Detrás del",
     titleLine2: "Código",
     bio: [
-      "Soy desarrollador full-stack de Santa Catarina, Brasil, y construyo landing pages, sitios institucionales y aplicaciones web de principio a fin — desde la interfaz hasta la base de datos, integraciones y despliegue.",
+      "Soy desarrollador full-stack y construyo landing pages, sitios institucionales y aplicaciones web de principio a fin — desde la interfaz hasta la base de datos, integraciones y despliegue.",
       "Llegué al desarrollo pasando por soporte técnico, coordinación de TI y operaciones técnicas antes de dedicarme por completo a la ingeniería — esto define cómo trabajo: me importa tanto el entorno de producción y el código limpio como entregar rápido. Ya entregué proyectos para clientes en Brasil y Europa.",
     ],
     locationLabel: "Ubicación",
@@ -759,7 +747,7 @@ const es: Translation = {
     ],
   },
   skills: {
-    tag: "// stack técnico",
+    tag: "Stack técnico",
     titleLine1: "Skills &",
     titleLine2: "Herramientas",
     desc: "Los lenguajes, frameworks y herramientas que uso para llevar un proyecto desde cero hasta el despliegue en producción.",
@@ -799,7 +787,7 @@ const es: Translation = {
     ],
   },
   services: {
-    tag: "// qué hago",
+    tag: "Qué hago",
     titleLine1: "Desarrollo Full-Stack",
     titleLine2: "de Embudos",
     desc: "Desde landing pages pixel-perfect hasta embudos de ventas completos y aplicaciones web complejas — me encargo del stack completo.",
@@ -835,7 +823,7 @@ const es: Translation = {
     ],
   },
   portfolio: {
-    tag: "// trabajo seleccionado",
+    tag: "Trabajo seleccionado",
     titleLine1: "Proyectos Construidos",
     titleLine2: "para Resultados Reales",
     desc: "Proyectos reales en diferentes industrias — el stack, el alcance y el propósito detrás de cada uno.",
@@ -862,11 +850,11 @@ const es: Translation = {
         type: "sitio web institucional",
       },
       {
-        category: "Landing Pages · Multi-Nicho",
-        title: "Landing Pages Profesionales",
+        category: "Landing Page · Barbería",
+        title: "Ytamar Barbershop",
         description:
-          "Landing pages de alta conversión en múltiples nichos — psicólogos, arquitectos, abogados e ingenieros. Cada página adaptada al público, oferta y objetivo de conversión específico.",
-        type: "landing pages",
+          "Landing page de alta conversión para una barbería — servicios, galería de cortes, equipo y ubicación, con CTA directo de reserva por WhatsApp. Construida con Next.js y TypeScript, mobile-first y optimizada para carga rápida y SEO.",
+        type: "landing page",
       },
       {
         category: "Embudo de Ventas · Respuesta Directa",
@@ -885,7 +873,7 @@ const es: Translation = {
     ],
   },
   experience: {
-    tag: "// trayectoria",
+    tag: "Trayectoria",
     titleLine1: "Experiencia",
     titleLine2: "Profesional",
     desc: "Del soporte técnico y la coordinación de TI a la ingeniería full-stack — una carrera construida con experiencia real de producción.",
@@ -893,7 +881,7 @@ const es: Translation = {
     jobs: [
       {
         company: "Parks Company",
-        role: "Desarrollador Full Stack",
+        role: "Desarrollador Full-Stack",
         bullets: [
           "Desarrollo de landing pages, sitios institucionales y aplicaciones web para clientes de diferentes nichos.",
           "Creación de soluciones front-end y full-stack utilizando React, Next.js, Node.js, TypeScript y JavaScript.",
@@ -906,28 +894,16 @@ const es: Translation = {
       },
       {
         company: "Grupo Impetus",
-        role: "Desarrollador Front-End",
+        role: "Desarrollador Full-Stack",
         bullets: [
-          "Desarrollo de landing pages, sitios institucionales y aplicaciones web con HTML, CSS y JavaScript.",
+          "Desarrollo full-stack de landing pages, sitios institucionales y aplicaciones web con HTML, CSS, JavaScript, TypeScript y Next.js.",
           "Implementación de interfaces modernas, reutilizables y escalables, con foco en rendimiento y mantenimiento.",
-          "Aplicación de principios de Clean Code y refactorización continua para mejorar la base de código.",
-          "Gestión de tareas diarias mediante Slack y Monday; edición y despliegue de sitios vía Hostinger.",
+          "Creación y mantenimiento de workflows de automatización en N8N e integración de plataformas de compliance.",
+          "Análisis y mantenimiento de la base de datos y de la tienda interna de la empresa; seguimiento de clics y ventas con RedTrack en las campañas.",
+          "Aplicación de Clean Code y refactorización continua; gestión de tareas vía Slack y Monday, despliegue vía Hostinger.",
           "Mantenimiento y personalización de sitios en WordPress.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "WordPress", "Hostinger"],
-        featured: true,
-      },
-      {
-        company: "Grupo Impetus",
-        role: "Desarrollador Back-End",
-        bullets: [
-          "Desarrollo de landing pages, sitios institucionales y aplicaciones web con HTML, CSS, JavaScript, TypeScript y Next.js.",
-          "Creación y mantenimiento de workflows de automatización en N8N e integración de plataformas de compliance.",
-          "Análisis y mantenimiento de la base de datos de la empresa.",
-          "Seguimiento de clics y ventas con RedTrack, midiendo conversiones de campañas.",
-          "Creación y mantenimiento de la tienda interna de la empresa.",
-        ],
-        tech: ["Node.js", "TypeScript", "N8N", "RedTrack"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -969,40 +945,45 @@ const es: Translation = {
     ],
   },
   process: {
-    tag: "// cómo trabajo",
-    titleLine1: "Proceso Limpio,",
+    tag: "Cómo trabajo",
+    titleLine1: "Proceso de Ingeniería,",
     titleLine2: "Entrega Real",
-    desc: "Sin idas y vueltas innecesarias. Un proceso claro y eficiente que respeta tu tiempo y entrega según lo programado.",
+    desc: "Un proceso de ingeniería ágil y previsible. Cada fase tiene entregables y criterios de aceptación explícitos, así que no hay retrabajo ni sorpresas en el plazo — desde el relevamiento de requisitos hasta un despliegue monitoreado en producción.",
     steps: [
       {
-        title: "Descubrimiento & Alineación",
+        title: "Descubrimiento & Requisitos",
         description:
-          "Definimos el objetivo, el público, la oferta y la acción de conversión exacta que la página necesita generar antes de que se construya nada.",
+          "Mapeo el objetivo de negocio, el público, el recorrido del usuario y las métricas de éxito, y lo traduzco en requisitos funcionales y no funcionales: integraciones necesarias, modelo de datos, reglas de autenticación y permisos, presupuesto de rendimiento y restricciones técnicas — documentados antes de cualquier estimación.",
       },
       {
-        title: "Estrategia & Estructura",
+        title: "Arquitectura & Planificación",
         description:
-          "Arquitectura de página planificada en torno a principios DR — titular, gancho, prueba social, oferta, CTA — antes de escribir una sola línea de código.",
+          "Decisiones de stack, arquitectura de componentes, enrutamiento y esquema de base de datos (Supabase / PostgreSQL) con sus políticas de RLS. Contratos de API, integraciones de terceros, estados de pantalla, casos límite y criterios de aceptación especificados antes de la primera línea de código.",
       },
       {
         title: "Desarrollo",
         description:
-          "Código limpio, rápido y mobile-first. Cada detalle elaborado para reducir la fricción y guiar al visitante hacia la conversión.",
+          "Implementación en TypeScript con Next.js y Node.js — código tipado, basado en componentes y mobile-first. Server actions e integraciones REST/webhook, validación de formularios y manejo de errores, marcado semántico y accesible, todo versionado en Git con pull requests revisados y refactorización continua.",
       },
       {
-        title: "Entrega & Soporte",
+        title: "QA & Rendimiento",
         description:
-          "Archivos finales o deployment en vivo, más soporte de revisiones. Lanzas con confianza y control total.",
+          "Revisión de extremo a extremo de cada flujo: caminos felices y casos límite, estados de carga, vacío y error, y comportamiento responsivo en todos los breakpoints. Pasada de accesibilidad y ajuste de rendimiento según los Core Web Vitals — optimización de imágenes, code-splitting y caché.",
+      },
+      {
+        title: "Despliegue & Soporte",
+        description:
+          "Despliegue continuo en Vercel con variables de entorno, dominio propio y observabilidad básica (logs y seguimiento de errores) configurados. Entrega con documentación, más soporte de revisiones para que lances con control total del código.",
       },
     ],
   },
   cta: {
-    tag: "// ¿listo para empezar?",
+    tag: "¿Listo para empezar?",
     titleLine1: "Construyamos Algo",
     titleLine2: "Que Vende.",
     desc: "Disponible para landing pages, embudos y proyectos full-stack. Entrega rápida. Resultados reales.",
   },
-  footer: "<leo.dev /> · Desarrollo Full-Stack · © 2026",
+  footer: "Leonardo Muniz — Desarrollo Full-Stack · © 2026",
 }
 
 export const translations: Record<Lang, Translation> = { en, pt, es }

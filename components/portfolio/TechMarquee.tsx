@@ -7,14 +7,14 @@ export function TechMarquee() {
   const items = [...CORE_TECH, ...CORE_TECH]
 
   return (
-    <div className="relative overflow-hidden border-y border-sky-400/10 py-6 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
-      <div className="flex w-max gap-12 animate-[marquee_32s_linear_infinite] hover:[animation-play-state:paused]">
+    <div className="relative overflow-hidden border-y border-white/[0.07] py-6 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]">
+      <div className="flex w-max animate-[marquee_36s_linear_infinite] gap-12 hover:[animation-play-state:paused]">
         {items.map((item, i) => (
           <span
             key={`${item}-${i}`}
-            className="inline-flex items-center gap-[10px] font-mono text-[.85rem] text-slate-500 tracking-[.5px] whitespace-nowrap"
+            className="inline-flex items-center gap-[10px] whitespace-nowrap text-[0.82rem] tracking-[0.02em] text-neutral-500"
           >
-            <span className="w-[5px] h-[5px] rounded-full bg-sky-400/50 shadow-[0_0_6px_rgba(56,189,248,.5)]" />
+            <span className="h-[4px] w-[4px] rounded-full bg-neutral-600" />
             {item}
           </span>
         ))}

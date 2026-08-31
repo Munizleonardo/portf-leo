@@ -1,5 +1,4 @@
 import { LanguageProvider }   from "@/lib/i18n/LanguageContext"
-import { ParticleCanvas }     from "@/components/portfolio/ParticleCanvas"
 import { Navbar }             from "@/components/portfolio/Navbar"
 import { HeroSection }        from "@/components/portfolio/HeroSection"
 import { AboutSection }       from "@/components/portfolio/AboutSection"
@@ -15,7 +14,6 @@ import { Footer }             from "@/components/portfolio/Footer"
 export default function Page() {
   return (
     <LanguageProvider>
-      <ParticleCanvas />
       <Navbar />
       <main>
         <HeroSection />
