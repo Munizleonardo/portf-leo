@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
@@ -15,6 +15,17 @@ const langs: { lang: Lang; code: string }[] = [
 export function Navbar() {
   const { lang, setLang, t } = useLanguage()
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  // Shrinks the bar and firms up its bottom edge once the page actually
+  // starts scrolling — a small cue that the surface has depth, not just
+  // a static header.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const links = [
     { href: "#about",      label: t.nav.about },
@@ -24,8 +35,16 @@ export function Navbar() {
   ]
 
   return (
-    <nav className="fixed inset-x-0 top-0 z-[200] border-b border-white/[0.06] bg-[#0a0a0a]/80 backdrop-blur-xl">
-      <div className="flex items-center justify-between px-12 py-[18px] max-[900px]:px-5 max-[900px]:py-4">
+    <nav
+      className={`fixed inset-x-0 top-0 z-[200] border-b bg-[#0a0a0a]/80 backdrop-blur-xl transition-colors duration-300 ${
+        scrolled ? "border-white/[0.1]" : "border-white/[0.03]"
+      }`}
+    >
+      <div
+        className={`flex items-center justify-between px-12 transition-[padding] duration-300 max-[900px]:px-5 ${
+          scrolled ? "py-3 max-[900px]:py-3" : "py-[18px] max-[900px]:py-4"
+        }`}
+      >
         <Link
           href="#"
           className="text-sm font-medium tracking-tight no-underline"

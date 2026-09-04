@@ -14,7 +14,7 @@ export function ServicesSection() {
 
   return (
     <section
-      className="mx-auto max-w-[1180px] px-10 py-[120px] max-[900px]:px-5 max-[900px]:py-[80px]"
+      className="mx-auto max-w-[1180px] px-10 py-24 max-[900px]:px-5 max-[900px]:py-17"
       id="services"
     >
       <ScrollReveal>
@@ -31,7 +31,10 @@ export function ServicesSection() {
         </p>
       </ScrollReveal>
 
-      <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-4">
+      {/* items-start: a short card no longer stretches to match its
+          tallest row-mate — same fix as Skills, applied to the grid
+          instead of a list. */}
+      <div className="grid grid-cols-[repeat(auto-fit,minmax(255px,1fr))] items-start gap-4">
         {services.cards.map((card, i) => (
           <ScrollReveal key={card.title} delay={(i % 4) * 70}>
             <ServiceCard

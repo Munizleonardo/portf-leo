@@ -52,14 +52,18 @@ export interface Translation {
   }
   hero: {
     eyebrow: string
-    /** Headline line 1 (before the persistent "Full-Stack"). */
-    titleLead: string
-    /** Headline tail (after "Full-Stack"). */
-    titleTail: string
+    /** Headline line 1 — white, the hook. */
+    titleLine1: string
+    /** Headline line 2 — dimmed, the contrast/payoff. */
+    titleLine2: string
     subtitle: string
     cta1: string
     cta2: string
-    scroll: string
+    /** Context strip under the hero, e.g. "Replies within ~24h". */
+    responseTime: string
+    statProjects: string
+    statYears: string
+    statStacks: string
   }
   stats: {
     projects: string
@@ -85,6 +89,8 @@ export interface Translation {
     titleLine1: string
     titleLine2: string
     desc: string
+    /** e.g. "tools" in "7 tools" under each category. */
+    itemsLabel: string
     categories: SkillCategoryTranslation[]
   }
   services: {
@@ -99,6 +105,10 @@ export interface Translation {
     titleLine1: string
     titleLine2: string
     desc: string
+    /** Footer link on a project card that has a public repo. */
+    viewRepo: string
+    /** Flag shown instead of the repo link when there isn't one. */
+    private: string
     projects: ProjectTranslation[]
   }
   experience: {
@@ -106,7 +116,8 @@ export interface Translation {
     titleLine1: string
     titleLine2: string
     desc: string
-    earlierLabel: string
+    /** e.g. "companies" in the "5 companies" index next to the heading. */
+    companiesLabel: string
     jobs: ExperienceJobTranslation[]
   }
   process: {
@@ -114,6 +125,8 @@ export interface Translation {
     titleLine1: string
     titleLine2: string
     desc: string
+    /** Short label/value facts under the sticky intro, e.g. Delivery → "with documentation". */
+    facts: { label: string; value: string }[]
     steps: ProcessStepTranslation[]
   }
   cta: {
@@ -135,13 +148,16 @@ const en: Translation = {
   },
   hero: {
     eyebrow: "Available for new projects · Full-Stack Developer",
-    titleLead: "I Build",
-    titleTail: "Digital Products.",
+    titleLine1: "I started in tech support.",
+    titleLine2: "Now I ship the whole product.",
     subtitle:
-      "Full-stack developer crafting landing pages, institutional websites, web applications, and complete sales funnels — end to end, from interface to database, integrations, and deploy. Powered by Next.js, TypeScript, Node.js, and Supabase.",
+      "Full-stack developer. From interface to database, integrations, and deploy — I don't hand the project off along the way.",
     cta1: "See My Work",
     cta2: "Let's Talk →",
-    scroll: "scroll",
+    responseTime: "Replies within ~24h",
+    statProjects: "projects",
+    statYears: "years",
+    statStacks: "stacks",
   },
   stats: {
     projects: "Projects Delivered",
@@ -164,7 +180,7 @@ const en: Translation = {
     languages: [
       { name: "Portuguese", level: "Native" },
       { name: "English", level: "Advanced" },
-      { name: "Spanish", level: "Basic" },
+      { name: "Spanish", level: "Intermediate" },
     ],
     educationLabel: "Education",
     education: [
@@ -177,34 +193,51 @@ const en: Translation = {
     titleLine1: "Skills &",
     titleLine2: "Tools",
     desc: "The languages, frameworks, and tools I use to take a project from a blank file to a production deploy.",
+    itemsLabel: "tools",
     categories: [
       {
+        title: "Languages",
+        items: ["JavaScript", "TypeScript"],
+      },
+      {
         title: "Front-End",
-        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+        items: ["React", "Next.js (App Router)", "Tailwind CSS", "ShadCN/UI", "HTML"],
       },
       {
         title: "Back-End",
-        items: ["Node.js", "REST APIs", "Webhooks", "Server Actions", "External Integrations"],
+        items: ["Node.js", "API REST", "Webhooks", "Server Actions", "External Integrations"],
       },
       {
         title: "Database",
-        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+        items: ["Supabase (Auth, RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Testing",
+        items: ["Jest", "Playwright"],
+      },
+      {
+        title: "Automation & Integrations",
+        items: ["n8n", "RedTrack", "ActiveCampaign", "Vturb"],
       },
       {
         title: "Versioning",
         items: ["Git", "GitHub", "Pull Requests", "Code Review"],
       },
       {
-        title: "Deploy & Automation",
-        items: ["Vercel", "N8N"],
+        title: "DevOps",
+        items: ["Docker", "CI/CD"],
+      },
+      {
+        title: "Deploy",
+        items: ["Vercel", "Hostinger"],
+      },
+      {
+        title: "Tools",
+        items: ["Figma", "Slack", "Monday", "WordPress", "GoDaddy", "Gather"],
       },
       {
         title: "Artificial Intelligence",
         items: ["Claude", "Cursor", "Codex"],
-      },
-      {
-        title: "Tools & Platforms",
-        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
       },
       {
         title: "Operating Systems",
@@ -253,6 +286,8 @@ const en: Translation = {
     titleLine1: "Projects Built",
     titleLine2: "for Real Results",
     desc: "Real projects across different industries — the stack, the scope, and the purpose behind each one.",
+    viewRepo: "View repository",
+    private: "Private",
     projects: [
       {
         category: "Institutional · Education",
@@ -303,7 +338,7 @@ const en: Translation = {
     titleLine1: "Professional",
     titleLine2: "Experience",
     desc: "From technical support and IT coordination to full-stack engineering — a career built on hands-on production experience.",
-    earlierLabel: "Earlier Experience",
+    companiesLabel: "companies",
     jobs: [
       {
         company: "Parks Company",
@@ -324,12 +359,12 @@ const en: Translation = {
         bullets: [
           "Built landing pages, institutional websites, and web applications across the full stack with HTML, CSS, JavaScript, TypeScript, and Next.js.",
           "Implemented modern, reusable, and scalable interfaces focused on performance and maintainability.",
-          "Created and maintained automation workflows in N8N and integrated compliance platforms.",
+          "Created and maintained automation workflows in n8n and integrated compliance platforms.",
           "Analyzed and maintained the company's database and internal store; tracked clicks and sales with RedTrack across campaigns.",
           "Applied Clean Code and continuous refactoring; managed daily demands via Slack and Monday, deployed via Hostinger.",
           "Maintained and customized WordPress-based sites.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "n8n", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -375,6 +410,11 @@ const en: Translation = {
     titleLine1: "Engineering Process,",
     titleLine2: "Real Delivery",
     desc: "A lean, predictable engineering process. Every phase has explicit deliverables and acceptance criteria, so there is no rework and no surprise on the timeline — from requirements gathering to a monitored production deploy.",
+    facts: [
+      { label: "Delivery",   value: "with documentation" },
+      { label: "Revisions",  value: "included" },
+      { label: "Code",       value: "yours, at the end" },
+    ],
     steps: [
       {
         title: "Discovery & Requirements",
@@ -422,13 +462,16 @@ const pt: Translation = {
   },
   hero: {
     eyebrow: "Disponível para novos projetos · Desenvolvedor Full-Stack",
-    titleLead: "Eu Construo Produtos",
-    titleTail: "Completos.",
+    titleLine1: "Comecei no suporte técnico.",
+    titleLine2: "Hoje entrego o produto inteiro.",
     subtitle:
-      "Desenvolvedor full-stack que cria landing pages, sites institucionais, aplicações web e funis de vendas completos — do front-end ao banco de dados, integrações e deploy. Com Next.js, TypeScript, Node.js e Supabase em cada projeto.",
+      "Desenvolvedor full-stack. Da interface ao banco de dados, integrações e deploy — sem passar o projeto adiante em nenhuma etapa.",
     cta1: "Ver Meus Trabalhos",
     cta2: "Vamos Conversar →",
-    scroll: "rolar",
+    responseTime: "Resposta em ~24h",
+    statProjects: "projetos",
+    statYears: "anos",
+    statStacks: "stacks",
   },
   stats: {
     projects: "Projetos Entregues",
@@ -451,7 +494,7 @@ const pt: Translation = {
     languages: [
       { name: "Português", level: "Nativo" },
       { name: "Inglês", level: "Avançado" },
-      { name: "Espanhol", level: "Básico" },
+      { name: "Espanhol", level: "Intermediário" },
     ],
     educationLabel: "Formação",
     education: [
@@ -464,34 +507,51 @@ const pt: Translation = {
     titleLine1: "Skills &",
     titleLine2: "Ferramentas",
     desc: "As linguagens, frameworks e ferramentas que uso para levar um projeto do zero até o deploy em produção.",
+    itemsLabel: "ferramentas",
     categories: [
       {
+        title: "Linguagens",
+        items: ["JavaScript", "TypeScript"],
+      },
+      {
         title: "Front-End",
-        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+        items: ["React", "Next.js (App Router)", "Tailwind CSS", "ShadCN/UI", "HTML"],
       },
       {
         title: "Back-End",
-        items: ["Node.js", "API Rest", "Webhooks", "Server Actions", "Integrações Externas"],
+        items: ["Node.js", "API REST", "Webhooks", "Server Actions", "Integrações Externas"],
       },
       {
         title: "Banco de Dados",
-        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+        items: ["Supabase (Auth, RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Testes",
+        items: ["Jest", "Playwright"],
+      },
+      {
+        title: "Automação & Integrações",
+        items: ["n8n", "RedTrack", "ActiveCampaign", "Vturb"],
       },
       {
         title: "Versionamento",
         items: ["Git", "GitHub", "Pull Requests", "Code Review"],
       },
       {
-        title: "Deploy & Automação",
-        items: ["Vercel", "N8N"],
+        title: "DevOps",
+        items: ["Docker", "CI/CD"],
+      },
+      {
+        title: "Deploy",
+        items: ["Vercel", "Hostinger"],
+      },
+      {
+        title: "Ferramentas",
+        items: ["Figma", "Slack", "Monday", "WordPress", "GoDaddy", "Gather"],
       },
       {
         title: "Inteligência Artificial",
         items: ["Claude", "Cursor", "Codex"],
-      },
-      {
-        title: "Ferramentas & Plataformas",
-        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
       },
       {
         title: "Sistemas Operacionais",
@@ -540,6 +600,8 @@ const pt: Translation = {
     titleLine1: "Projetos Construídos",
     titleLine2: "para Resultados Reais",
     desc: "Projetos reais em diferentes setores — o stack, o escopo e o propósito por trás de cada um.",
+    viewRepo: "Ver repositório",
+    private: "Privado",
     projects: [
       {
         category: "Institucional · Educação",
@@ -590,7 +652,7 @@ const pt: Translation = {
     titleLine1: "Experiência",
     titleLine2: "Profissional",
     desc: "Do suporte técnico e coordenação de TI até a engenharia full-stack — uma carreira construída com experiência real de produção.",
-    earlierLabel: "Experiências Anteriores",
+    companiesLabel: "empresas",
     jobs: [
       {
         company: "Parks Company",
@@ -611,12 +673,12 @@ const pt: Translation = {
         bullets: [
           "Desenvolvimento full-stack de landing pages, sites institucionais e aplicações web com HTML, CSS, JavaScript, TypeScript e Next.js.",
           "Implementação de interfaces modernas, reutilizáveis e escaláveis, com foco em performance e manutenção.",
-          "Criação e manutenção de workflows de automação no N8N e integração de plataformas de compliance.",
+          "Criação e manutenção de workflows de automação no n8n e integração de plataformas de compliance.",
           "Análise e manutenção do banco de dados e da loja interna da empresa; trackeamento de cliques e vendas com RedTrack nas campanhas.",
           "Aplicação de Clean Code e refatoração contínua; gestão de demandas via Slack e Monday, deploy via Hostinger.",
           "Manutenção e customização de sites em WordPress.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "n8n", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -662,6 +724,11 @@ const pt: Translation = {
     titleLine1: "Processo de Engenharia,",
     titleLine2: "Entrega Real",
     desc: "Um processo de engenharia enxuto e previsível. Cada etapa tem entregáveis e critérios de aceite explícitos, então não há retrabalho nem surpresa no prazo — do levantamento de requisitos ao deploy monitorado em produção.",
+    facts: [
+      { label: "Entrega",   value: "com documentação" },
+      { label: "Revisões",  value: "incluídas" },
+      { label: "Código",    value: "seu, no fim" },
+    ],
     steps: [
       {
         title: "Descoberta & Requisitos",
@@ -709,13 +776,16 @@ const es: Translation = {
   },
   hero: {
     eyebrow: "Disponible para nuevos proyectos · Desarrollador Full-Stack",
-    titleLead: "Construyo Productos",
-    titleTail: "Completos.",
+    titleLine1: "Empecé en soporte técnico.",
+    titleLine2: "Hoy entrego el producto entero.",
     subtitle:
-      "Desarrollador full-stack que crea landing pages, sitios institucionales, aplicaciones web y embudos de ventas completos — de principio a fin, desde la interfaz hasta la base de datos, integraciones y despliegue. Con Next.js, TypeScript, Node.js y Supabase en cada proyecto.",
+      "Desarrollador full-stack. De la interfaz a la base de datos, integraciones y despliegue — sin pasar el proyecto a nadie en el camino.",
     cta1: "Ver Mi Trabajo",
     cta2: "Hablemos →",
-    scroll: "scroll",
+    responseTime: "Respuesta en ~24h",
+    statProjects: "proyectos",
+    statYears: "años",
+    statStacks: "stacks",
   },
   stats: {
     projects: "Proyectos Entregados",
@@ -738,7 +808,7 @@ const es: Translation = {
     languages: [
       { name: "Portugués", level: "Nativo" },
       { name: "Inglés", level: "Avanzado" },
-      { name: "Español", level: "Básico" },
+      { name: "Español", level: "Intermedio" },
     ],
     educationLabel: "Formación",
     education: [
@@ -751,10 +821,15 @@ const es: Translation = {
     titleLine1: "Skills &",
     titleLine2: "Herramientas",
     desc: "Los lenguajes, frameworks y herramientas que uso para llevar un proyecto desde cero hasta el despliegue en producción.",
+    itemsLabel: "herramientas",
     categories: [
       {
+        title: "Lenguajes",
+        items: ["JavaScript", "TypeScript"],
+      },
+      {
         title: "Front-End",
-        items: ["HTML", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "ShadCN/UI"],
+        items: ["React", "Next.js (App Router)", "Tailwind CSS", "ShadCN/UI", "HTML"],
       },
       {
         title: "Back-End",
@@ -762,23 +837,35 @@ const es: Translation = {
       },
       {
         title: "Base de Datos",
-        items: ["Supabase (Auth & RLS)", "PostgreSQL", "MySQL"],
+        items: ["Supabase (Auth, RLS)", "PostgreSQL", "MySQL"],
+      },
+      {
+        title: "Pruebas",
+        items: ["Jest", "Playwright"],
+      },
+      {
+        title: "Automatización e Integraciones",
+        items: ["n8n", "RedTrack", "ActiveCampaign", "Vturb"],
       },
       {
         title: "Versionado",
         items: ["Git", "GitHub", "Pull Requests", "Code Review"],
       },
       {
-        title: "Despliegue & Automatización",
-        items: ["Vercel", "N8N"],
+        title: "DevOps",
+        items: ["Docker", "CI/CD"],
+      },
+      {
+        title: "Despliegue",
+        items: ["Vercel", "Hostinger"],
+      },
+      {
+        title: "Herramientas",
+        items: ["Figma", "Slack", "Monday", "WordPress", "GoDaddy", "Gather"],
       },
       {
         title: "Inteligencia Artificial",
         items: ["Claude", "Cursor", "Codex"],
-      },
-      {
-        title: "Herramientas & Plataformas",
-        items: ["Figma", "Slack", "Hostinger", "GoDaddy", "RedTrack", "Vturb", "Gather"],
       },
       {
         title: "Sistemas Operativos",
@@ -827,6 +914,8 @@ const es: Translation = {
     titleLine1: "Proyectos Construidos",
     titleLine2: "para Resultados Reales",
     desc: "Proyectos reales en diferentes industrias — el stack, el alcance y el propósito detrás de cada uno.",
+    viewRepo: "Ver repositorio",
+    private: "Privado",
     projects: [
       {
         category: "Institucional · Educación",
@@ -877,7 +966,7 @@ const es: Translation = {
     titleLine1: "Experiencia",
     titleLine2: "Profesional",
     desc: "Del soporte técnico y la coordinación de TI a la ingeniería full-stack — una carrera construida con experiencia real de producción.",
-    earlierLabel: "Experiencias Anteriores",
+    companiesLabel: "empresas",
     jobs: [
       {
         company: "Parks Company",
@@ -898,12 +987,12 @@ const es: Translation = {
         bullets: [
           "Desarrollo full-stack de landing pages, sitios institucionales y aplicaciones web con HTML, CSS, JavaScript, TypeScript y Next.js.",
           "Implementación de interfaces modernas, reutilizables y escalables, con foco en rendimiento y mantenimiento.",
-          "Creación y mantenimiento de workflows de automatización en N8N e integración de plataformas de compliance.",
+          "Creación y mantenimiento de workflows de automatización en n8n e integración de plataformas de compliance.",
           "Análisis y mantenimiento de la base de datos y de la tienda interna de la empresa; seguimiento de clics y ventas con RedTrack en las campañas.",
           "Aplicación de Clean Code y refactorización continua; gestión de tareas vía Slack y Monday, despliegue vía Hostinger.",
           "Mantenimiento y personalización de sitios en WordPress.",
         ],
-        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "N8N", "RedTrack", "WordPress", "Hostinger"],
+        tech: ["HTML", "CSS", "JavaScript", "TypeScript", "Next.js", "Node.js", "n8n", "RedTrack", "WordPress", "Hostinger"],
         featured: true,
       },
       {
@@ -949,6 +1038,11 @@ const es: Translation = {
     titleLine1: "Proceso de Ingeniería,",
     titleLine2: "Entrega Real",
     desc: "Un proceso de ingeniería ágil y previsible. Cada fase tiene entregables y criterios de aceptación explícitos, así que no hay retrabajo ni sorpresas en el plazo — desde el relevamiento de requisitos hasta un despliegue monitoreado en producción.",
+    facts: [
+      { label: "Entrega",     value: "con documentación" },
+      { label: "Revisiones",  value: "incluidas" },
+      { label: "Código",      value: "tuyo, al final" },
+    ],
     steps: [
       {
         title: "Descubrimiento & Requisitos",

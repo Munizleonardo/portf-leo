@@ -19,7 +19,7 @@ export function CTASection() {
 
   return (
     <div
-      className="border-t border-white/[0.07] px-10 py-[130px] text-center max-[900px]:px-5 max-[900px]:py-[90px]"
+      className="border-t border-white/[0.07] px-10 py-27 text-center max-[900px]:px-5 max-[900px]:py-19"
       id="contact"
     >
       <ScrollReveal>

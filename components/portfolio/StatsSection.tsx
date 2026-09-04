@@ -3,15 +3,16 @@
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { StatItem } from "./StatItem"
 import { ScrollReveal } from "./ScrollReveal"
+import { STAT_TARGETS } from "@/lib/stats"
 
 export function StatsSection() {
   const { t } = useLanguage()
 
   const stats = [
-    { target: 30,  label: t.stats.projects },
-    { target: 4,   label: t.stats.experience },
-    { target: 5,   label: t.stats.stacks },
-    { target: 100, label: t.stats.satisfaction, suffix: "%" },
+    { target: STAT_TARGETS.projects,     label: t.stats.projects },
+    { target: STAT_TARGETS.years,        label: t.stats.experience },
+    { target: STAT_TARGETS.stacks,       label: t.stats.stacks },
+    { target: STAT_TARGETS.satisfaction, label: t.stats.satisfaction, suffix: "%" },
   ]
 
   return (

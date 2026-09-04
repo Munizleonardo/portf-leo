@@ -29,7 +29,7 @@ export function PortfolioSection() {
 
   return (
     <section
-      className="mx-auto max-w-[1180px] px-10 pb-[120px] pt-0 max-[900px]:px-5 max-[900px]:pb-[80px]"
+      className="mx-auto max-w-[1180px] px-10 pb-24 pt-0 max-[900px]:px-5 max-[900px]:pb-17"
       id="work"
     >
       <ScrollReveal>
@@ -44,7 +44,9 @@ export function PortfolioSection() {
         </p>
       </ScrollReveal>
 
-      <div className="grid auto-rows-fr grid-cols-2 gap-5 max-[900px]:grid-cols-1">
+      {/* items-start: a card without a repo (shorter, no footer) no longer
+          stretches to match its row-mate's height. */}
+      <div className="grid grid-cols-2 items-start gap-5 max-[900px]:grid-cols-1">
         {portfolio.projects.map((proj, i) => (
           <ScrollReveal key={i} delay={(i % 2) * 80}>
             <ProjectCard
@@ -53,6 +55,8 @@ export function PortfolioSection() {
               description={proj.description}
               stack={stacks[i]}
               repo={repos[i]}
+              viewRepoLabel={portfolio.viewRepo}
+              privateLabel={portfolio.private}
             />
           </ScrollReveal>
         ))}

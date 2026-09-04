@@ -1,13 +1,10 @@
 "use client"
 
-import { Code2, Server, Database, GitBranch, Rocket, Sparkles, Wrench, Monitor } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
-import { SkillCategoryCard } from "./SkillCategoryCard"
+import { SkillRow } from "./SkillRow"
 import { TechMarquee } from "./TechMarquee"
 import { ScrollReveal } from "./ScrollReveal"
 import { SectionLabel } from "./SectionLabel"
-
-const icons = [Code2, Server, Database, GitBranch, Rocket, Sparkles, Wrench, Monitor]
 
 export function SkillsSection() {
   const { t } = useLanguage()
@@ -15,7 +12,7 @@ export function SkillsSection() {
 
   return (
     <section
-      className="mx-auto max-w-[1180px] px-10 py-[120px] max-[900px]:px-5 max-[900px]:py-[80px]"
+      className="mx-auto max-w-[1180px] px-10 py-24 max-[900px]:px-5 max-[900px]:py-17"
       id="skills"
     >
       <ScrollReveal>
@@ -32,14 +29,17 @@ export function SkillsSection() {
         </p>
       </ScrollReveal>
 
-      <ScrollReveal className="mb-12">
+      <ScrollReveal className="mb-10">
         <TechMarquee />
       </ScrollReveal>
 
-      <div className="grid auto-rows-fr grid-cols-[repeat(auto-fit,minmax(255px,1fr))] gap-4">
+      {/* Editorial list — category left, stack flowing right, natural
+          height per row. Replaces the 8-card grid, which forced every
+          short category to the height of the longest one. */}
+      <div className="border-t border-white/[0.07]">
         {skills.categories.map((cat, i) => (
-          <ScrollReveal key={cat.title} delay={(i % 4) * 70}>
-            <SkillCategoryCard icon={icons[i % icons.length]} title={cat.title} items={cat.items} />
+          <ScrollReveal key={cat.title} delay={Math.min(i, 6) * 45}>
+            <SkillRow title={cat.title} items={cat.items} itemsLabel={skills.itemsLabel} />
           </ScrollReveal>
         ))}
       </div>

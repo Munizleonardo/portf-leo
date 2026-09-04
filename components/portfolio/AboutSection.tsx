@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Languages, GraduationCap } from "lucide-react"
+import { Languages, GraduationCap, MapPin } from "lucide-react"
 import { useLanguage } from "@/lib/i18n/LanguageContext"
 import { ScrollReveal } from "./ScrollReveal"
 import { SectionLabel } from "./SectionLabel"
@@ -13,7 +13,7 @@ export function AboutSection() {
 
   return (
     <section
-      className="mx-auto max-w-[1180px] px-10 py-[120px] max-[900px]:px-5 max-[900px]:py-[80px]"
+      className="mx-auto max-w-[1180px] px-10 py-24 max-[900px]:px-5 max-[900px]:py-17"
       id="about"
     >
       <div className="grid grid-cols-[1.3fr_.7fr] items-start gap-[80px] max-[900px]:grid-cols-1 max-[900px]:gap-12">
@@ -57,9 +57,12 @@ export function AboutSection() {
           </div>
         </ScrollReveal>
 
-        {/* Profile card */}
+        {/* Profile card — sticky (on its own wrapper, not the reveal root,
+            so the fade-up transform never fights the sticky positioning)
+            so it stays in view instead of ending well before the bio
+            text does. */}
         <ScrollReveal>
-          <div className="mx-auto flex max-w-[320px] flex-col items-center gap-6 rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-8 text-center md:mx-0">
+          <div className="md:sticky md:top-28 mx-auto flex max-w-[320px] flex-col items-center gap-6 rounded-[22px] border border-white/[0.07] bg-white/[0.02] p-8 text-center md:mx-0">
             <div className="relative h-[176px] w-[176px] overflow-hidden rounded-[20px] border border-white/10">
               <Image
                 src="/img.jpeg"
@@ -87,6 +90,10 @@ export function AboutSection() {
                   <span className="h-[7px] w-[7px] rounded-full bg-neutral-300" />
                 </span>
                 {about.availability}
+              </div>
+              <div className="flex items-center gap-3 text-[0.85rem] text-neutral-400">
+                <MapPin className="h-4 w-4 shrink-0 text-neutral-500" strokeWidth={1.5} />
+                {about.location}
               </div>
               <div className="flex items-start gap-3 text-[0.85rem] text-neutral-400">
                 <Languages className="mt-[3px] h-4 w-4 shrink-0 text-neutral-500" strokeWidth={1.5} />

@@ -1,6 +1,6 @@
 const CORE_TECH = [
   "TypeScript", "JavaScript", "React", "Next.js", "Node.js",
-  "Tailwind CSS", "Supabase", "PostgreSQL", "Vercel", "Git", "N8N", "REST API",
+  "Tailwind CSS", "Supabase", "PostgreSQL", "Vercel", "Git", "n8n", "API REST",
 ]
 
 export function TechMarquee() {
